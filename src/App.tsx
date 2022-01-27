@@ -1,5 +1,13 @@
+import Routes from "./routes";
+import GlobalStyle from "./utils/GlobalStyle";
+
 function App() {
-  return <h1>Hello Competi</h1>;
+  return (
+    <>
+      <GlobalStyle />
+      <Routes />
+    </>
+  );
 }
 
 export default App;
