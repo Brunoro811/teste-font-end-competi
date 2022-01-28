@@ -3,6 +3,7 @@ import {
   PokemonContextData,
   PokemonProviderData,
   Pokemon,
+  NamesPokemon,
 } from "./pokemon.model";
 
 import axios from "axios";
@@ -14,18 +15,20 @@ const PokemonContext = createContext<PokemonContextData>(
 );
 
 export const PokemonProvider = ({ children }: PokemonProviderData) => {
+  const [allNamesPokemon, setAllNamesPokemon] = useState(
+    JSON.parse(localStorage.getItem("@PokemonsNames") || "{}")
+  );
+
   const [pokemons, setPokemons] = useState<Pokemon[]>([]);
   const [itensPerPage] = useState(6);
   const [currentPage, setCurrentPage] = useState(0);
   const [currentSubPage, setCurrenSubtPage] = useState(0);
 
   const pages = Math.ceil(pokemons.length / itensPerPage);
-
   const startindex = currentPage * itensPerPage;
   const endIndex = startindex + itensPerPage;
   const startindexSubPage = currentSubPage * itensPerPage;
   const endIndexSubPage = startindexSubPage + itensPerPage;
-
   const [currentPokemons, setCurrentPokemons] = useState<Pokemon[]>([]);
   const [numberPage, setNumberPage] = useState(1);
 
@@ -41,19 +44,19 @@ export const PokemonProvider = ({ children }: PokemonProviderData) => {
 
   const handleGetPokemons = async (defaultNumber: number = 6) => {
     let pokemonsList: Pokemon[] = [];
-    for (let i = 1; i < 55; i++) {
+    for (let i = 1; i < 7; i++) {
       await axios
         .get(`${baseURL}/${i}/`)
         .then((response) => {
           const {
             name,
-            order,
+            id,
             types,
             sprites: { front_default },
           } = response.data;
           const newPokemon: Pokemon = {
             name: name,
-            order: order,
+            id: id,
             types: types[0].type.name,
             image: front_default,
           };
@@ -64,6 +67,19 @@ export const PokemonProvider = ({ children }: PokemonProviderData) => {
     setPokemons(pokemonsList);
     setCurrentPokemons(pokemonsList.slice(0, 6));
   };
+
+  useEffect(() => {
+    if (!allNamesPokemon.count) {
+      axios
+        .get(`${baseURL}?limit=1118&offset=0`)
+        .then((response) => {
+          console.log(response.data);
+          localStorage.setItem("@PokemonsNames", JSON.stringify(response.data));
+          setAllNamesPokemon(response.data);
+        })
+        .catch((error) => console.log(error.response.data));
+    }
+  }, [allNamesPokemon]);
 
   return (
     <PokemonContext.Provider
@@ -77,6 +93,7 @@ export const PokemonProvider = ({ children }: PokemonProviderData) => {
         currentSubPage,
         setCurrenSubtPage,
         numberPage,
+        allNamesPokemon,
       }}
     >
       {children}

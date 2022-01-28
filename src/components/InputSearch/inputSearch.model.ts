@@ -1,7 +1,8 @@
 
 export interface InputSearchData{
-    value? : string
-    register?: any
     placeholder?: string
     rest?: any
+    value: string;
+    onChange: React.Dispatch<React.SetStateAction<string>>;
+    functionSearch? : ()=> void
 }

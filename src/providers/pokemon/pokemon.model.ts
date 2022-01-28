@@ -1,5 +1,4 @@
 import React, { ReactNode } from "react";
-import { number } from "yup";
 
 export interface PokemonProviderData{
     children: ReactNode
@@ -14,14 +13,22 @@ export interface PokemonContextData{
     currentSubPage: number
     setCurrenSubtPage: React.Dispatch<React.SetStateAction<number>>
     numberPage: number
+    allNamesPokemon: any
 }
 export interface Pokemon{
     name: string
-    order: number
+    id: number
     types: any
     image: string
 }
 export interface PagesOfPokemons {
     page: number 
-    pokemons: Pokemon[]
+    link: string
+}
+export interface NamesPokemon{
+    name: string,
+    link: string
+    next?: null,
+    previous?: null
+    results?: any
 }

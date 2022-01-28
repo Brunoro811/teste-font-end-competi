@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { usePokemon } from "../../providers/pokemon";
 import { Pokemon } from "../../providers/pokemon/pokemon.model";
 import ButtonPage from "../buttonPage";
@@ -15,24 +15,18 @@ import {
 
 import next from "../../assets/svg/next.svg";
 import previous from "../../assets/svg/previous.svg";
+import { ContainerMainData } from "./containerMain.model";
 
-function ContainerMain() {
+function ContainerMain({ currentPokemons }: ContainerMainData) {
   const {
     handleGetPokemons,
     pages,
-    currentPokemons,
     setCurrentPage,
     currentPage,
     currentSubPage,
     setCurrenSubtPage,
     numberPage,
   } = usePokemon();
-  const [countPagePagination, setCountPagePagination] = useState(
-    Array.from(Array(pages), (element, index) => index).slice(
-      currentSubPage,
-      currentSubPage + 3
-    ).length
-  );
 
   useEffect(() => {
     handleGetPokemons();
@@ -43,7 +37,12 @@ function ContainerMain() {
         <Label>
           Filtro
           <Select defaultValue="filtro">
-            <option value="value"> Value</option>
+            <option value=""> all</option>
+            <option value="value"> Fire</option>
+            <option value="value"> Grass</option>
+            <option value="value"> Normal</option>
+            <option value="value"> bug</option>
+            <option value="value"> poison</option>
           </Select>
         </Label>
       </Header>
@@ -56,7 +55,7 @@ function ContainerMain() {
               name={element.name}
               type={element.types}
               alt={element.name}
-              number={element.order}
+              number={element.id}
               image={element.image}
             />
           ))}
@@ -67,7 +66,6 @@ function ContainerMain() {
           isImage
           image={previous}
         />
-
         {Array.from(Array(pages), (element, index) => index)
           .slice(currentSubPage, currentSubPage + 3)
           .map((element, index) => {

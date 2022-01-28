@@ -1,12 +1,32 @@
+import { useState } from "react";
 import { InputSearchData } from "./inputSearch.model";
 import { Input } from "./style";
-function InputSearch({ value, register, placeholder, rest }: InputSearchData) {
+
+import useDebounce from "./useDebouce";
+
+function InputSearch({
+  placeholder,
+  value,
+  onChange,
+  functionSearch = () => {},
+  rest,
+}: InputSearchData) {
+  const [displayValue, setDisplayValue] = useState(value);
+
+  const debouceChange = useDebounce(onChange, 1000);
+
+  function handleChange(event: any) {
+    setDisplayValue(event.target.value);
+    debouceChange(event.target.value);
+  }
   return (
     <Input
-      {...rest}
+      id="filtroBusca"
+      //{...rest}
+      value={displayValue}
+      onChange={handleChange}
       placeholder={placeholder}
       type="text"
-      //{...register(value)}
     />
   );
 }
