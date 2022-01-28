@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const Container = styled.main`
     width: 95%;
-    min-height: 50vh;
+   // height: 500px;
     max-width: 1140px;
     margin: 0 auto;
     border-radius: 5px;
@@ -11,7 +11,7 @@ export const Container = styled.main`
 `
 export const Header = styled.div`
     width: 100%;
-    height: 80px;
+    height: 60px;
     padding: 10px;
     border-bottom: 1px solid #707070;
     display: flex;
@@ -19,9 +19,19 @@ export const Header = styled.div`
 
 `
 export const ContainerBody = styled.div`
+    //width: 100%;
+    padding-top: 50px ;
     width: 100%;
-    height: 200px;
-    padding: 10px ;
+    max-width: 750px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-wrap: wrap;
+    @media(min-width: 600px){
+        flex-direction: row;
+        justify-content: center;
+    }
 `
 export const Select = styled.select`
     width: 200px;
@@ -33,4 +43,23 @@ export const Label = styled.label`
     font-size: 12px;
     display: flex;
     flex-direction: column;
+    padding: 2px;
+`
+export const ContainerPagination = styled.div`
+    width: 100%;
+    max-width: 750px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    gap: 10px;
+    height: 150px;
+    padding: 20px;
+`
+export const Page = styled.p`
+    text-align: end;
+    margin: 0 auto;
+    width: 100%;
+    max-width: 750px;
+    padding: 10px;
 `

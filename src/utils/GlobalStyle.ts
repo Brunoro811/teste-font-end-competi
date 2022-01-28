@@ -12,7 +12,7 @@ const GlobalStyle = createGlobalStyle`
         --font-secondary: #ffffff;
     }
 
-    h1,h2,h3,h4,h5,h6,div,main,section,header,button,form,a,span,p{
+    h1,h2,h3,h4,h5,h6,div,main,footer,section,header,button,form,a,span,p{
         box-sizing: border-box;
         padding: 0;
         margin: 0;
