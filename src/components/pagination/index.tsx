@@ -1,172 +1,79 @@
-import axios from "axios";
-import React, { Fragment, useEffect, useState } from "react";
-import { number } from "yup";
-import {
-  PagesOfPokemons,
-  Pokemon,
-} from "../../providers/pokemon/pokemon.model";
-import { baseURL } from "../../services/api";
+import React, { useState } from "react";
 
-const POKEMON_COUNT: string = "@PokemonCount";
+import ButtonPage from "../buttonPage";
+import { ContainerPagination } from "../ContainerMain/style";
 
-interface TotalRecords {
-  count: number;
-  results: any[];
+import next from "../../assets/svg/next.svg";
+import previous from "../../assets/svg/previous.svg";
+
+interface PaginationProps {
+  arrPages?: number[];
+  totalPages?: number;
+  currentPage?: number;
+  numberPagination?: number;
+  setCurrentPage?: any;
+  setCurrenSubtPage?: any;
 }
 
-function Pagination() {
-  const [totalRecords, setTotalRecords] = useState<TotalRecords>(
-    JSON.parse(localStorage.getItem(POKEMON_COUNT) || "{}")
-  );
-  const [currentPage, setCurrentPage] = useState<number>(1);
-  const pageLimit: number = 6;
-  const LEFT_PAGE: any = "LEFT";
-  const RIGHT_PAGE: any = "RIGHT";
-
-  const [totalPages, setTotalPages] = useState<number>(0);
-  const [pageNeighbours, setPageNeighbours] = useState<number>(1);
-
-  const range = (from: number, to: number, step: number = 1) => {
-    let i = from;
-    const range = [];
-    while (i <= to) {
-      range.push(i);
-      i += step;
-    }
-    return range;
-  };
-
-  const fetchPageNumbers = () => {
-    //totalpage
-    //currentPage,
-    //pageNeighbours
-    console.log("executou");
-    const totalNumbers = pageNeighbours * 2 + 3;
-    const totalBlocks = totalNumbers + 2;
-
-    if (totalPages > totalBlocks) {
-      const startPage = Math.max(2, currentPage - pageNeighbours);
-      const endPage = Math.min(totalPages - 1, currentPage + pageNeighbours);
-      let pages = range(startPage, endPage);
-
-      const hasLeftSpill = startPage > 2;
-      const hasRightSpill = totalPages - endPage > 1;
-      const spillOffset = totalNumbers - (pages.length + 1);
-
-      switch (true) {
-        // handle: (1) < {5 6} [7] {8 9} (10)
-        case hasLeftSpill && !hasRightSpill: {
-          const extraPages = range(startPage - spillOffset, startPage - 1);
-          pages = [LEFT_PAGE, ...extraPages, ...pages];
-          break;
-        }
-
-        // handle: (1) {2 3} [4] {5 6} > (10)
-        case !hasLeftSpill && hasRightSpill: {
-          const extraPages = range(endPage + 1, endPage + spillOffset);
-          pages = [...pages, ...extraPages, RIGHT_PAGE];
-          break;
-        }
-
-        // handle: (1) < {4 5} [6] {7 8} > (10)
-        case hasLeftSpill && hasRightSpill:
-        default: {
-          pages = [LEFT_PAGE, ...pages, RIGHT_PAGE];
-          break;
-        }
+function Pagination({
+  arrPages = [1, 2, 3, 4, 5, 6],
+  totalPages = 6,
+  currentPage = 0,
+  numberPagination = 2,
+  setCurrentPage,
+  setCurrenSubtPage,
+}: PaginationProps) {
+  const firstPositonArr = 0;
+  let lastPositonArr = 0;
+  const walkArray = (array: any[], inicio: any, fim: any) => {
+    let newArray = [];
+    let diferenca = fim - inicio;
+    if (inicio + diferenca <= array.length - 1) {
+      for (let i = inicio; i <= fim; i++) {
+        newArray.push(array[i]);
       }
-      return [1, ...pages, totalPages];
+    } else {
+      for (let i = inicio; i < array.length; i++) {
+        newArray.push(array[i]);
+      }
     }
-    return range(1, totalPages);
-  };
-  useEffect(() => {
-    if (!totalRecords.count) {
-      console.log("rodou");
-      axios
-        .get(`${baseURL}?limit=1118&offset=0`)
-        .then((response) => {
-          setTotalRecords(response.data);
-          setTotalPages(Math.ceil(response.data.count / pageLimit));
-          localStorage.setItem("@PokemonCount", JSON.stringify(response.data));
-        })
-        .catch((error) => {
-          console.log(error.response.data);
-          return 0;
-        });
-    }
-  }, [totalRecords.count]);
-
-  const handleClick = (page: number) => {
-    setCurrentPage(page);
-  };
-
-  const handleMoveLeft = () => {
-    setCurrentPage(currentPage - pageNeighbours * 2 - 1);
-  };
-
-  const handleMoveRight = () => {
-    setCurrentPage(currentPage + pageNeighbours * 2 + 1);
+    lastPositonArr = newArray[newArray.length - 1];
+    return newArray;
   };
 
   return (
-    <>
-      <h1>Pagination</h1>
-      <Fragment>
-        <nav aria-label="Countries Pagination">
-          <ul className="pagination">
-            {fetchPageNumbers().map((page: any, index: any) => {
-              if (page === LEFT_PAGE)
-                return (
-                  <li key={index} className="page-item">
-                    <a
-                      className="page-link"
-                      href="#"
-                      aria-label="Previous"
-                      onClick={() => handleMoveLeft}
-                    >
-                      <span aria-hidden="true">&laquo;</span>
-                      <span className="sr-only">Previous</span>
-                    </a>
-                  </li>
-                );
+    <ContainerPagination>
+      {walkArray(arrPages, currentPage, currentPage + numberPagination)[0] >
+        0 && (
+        <ButtonPage
+          onClick={(e) => setCurrentPage(currentPage - 1)}
+          isImage
+          image={previous}
+        />
+      )}
 
-              if (page === RIGHT_PAGE)
-                return (
-                  <li key={index} className="page-item">
-                    <a
-                      className="page-link"
-                      href="#"
-                      aria-label="Next"
-                      onClick={() => handleMoveRight}
-                    >
-                      <span aria-hidden="true">&raquo;</span>
-                      <span className="sr-only">Next</span>
-                    </a>
-                  </li>
-                );
-
-              return (
-                <li
-                  key={index}
-                  className={`page-item${
-                    currentPage === page ? " active" : ""
-                  }`}
-                >
-                  <a
-                    className="page-link"
-                    href="#"
-                    onClick={() => handleClick(page)}
-                  >
-                    {page}
-                  </a>
-                </li>
-              );
-            })}
-          </ul>
-        </nav>
-      </Fragment>
-    </>
+      {walkArray(arrPages, currentPage, currentPage + numberPagination).map(
+        (element, index) => (
+          <ButtonPage
+            key={index}
+            value={Number(currentPage + index)}
+            children={currentPage + index + 1}
+            onClick={(e) => setCurrenSubtPage(Number(e.target.value))}
+          />
+        )
+      )}
+      {walkArray(arrPages, currentPage, currentPage + numberPagination)[
+        walkArray(arrPages, currentPage, currentPage + numberPagination)
+          .length - 1
+      ] <
+        totalPages - 1 && (
+        <ButtonPage
+          onClick={(e) => setCurrentPage(currentPage + 1)}
+          isImage
+          image={next}
+        />
+      )}
+    </ContainerPagination>
   );
 }
-//export default React.memo(Pagination);
 export default Pagination;

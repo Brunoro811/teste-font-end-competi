@@ -9,15 +9,7 @@ export const Container = styled.main`
     background-color: #D4C3A3;
     box-shadow: 0px 0px 9px 0px #000000;
 `
-export const Header = styled.div`
-    width: 100%;
-    height: 60px;
-    padding: 10px;
-    border-bottom: 1px solid #707070;
-    display: flex;
-    align-items: center;
 
-`
 export const ContainerBody = styled.div`
     //width: 100%;
     padding-top: 50px ;
@@ -32,18 +24,6 @@ export const ContainerBody = styled.div`
         flex-direction: row;
         justify-content: center;
     }
-`
-export const Select = styled.select`
-    width: 200px;
-    padding: 10px;
-    outline: none;
-    border-radius: 5px;
-`
-export const Label = styled.label`
-    font-size: 12px;
-    display: flex;
-    flex-direction: column;
-    padding: 2px;
 `
 export const ContainerPagination = styled.div`
     width: 100%;

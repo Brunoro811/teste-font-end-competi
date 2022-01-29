@@ -6,7 +6,7 @@ export interface PokemonProviderData{
 export interface PokemonContextData{
     handleGetPokemons : (defaultNumber?: number)=> void
     pokemons: any
-    pages: number
+    totalPages: number
     currentPokemons : Pokemon[]
     setCurrentPage: React.Dispatch<React.SetStateAction<number>>
     currentPage: number

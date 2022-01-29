@@ -24,7 +24,7 @@ export const PokemonProvider = ({ children }: PokemonProviderData) => {
   const [currentPage, setCurrentPage] = useState(0);
   const [currentSubPage, setCurrenSubtPage] = useState<number>(0);
 
-  const pages = Math.ceil(pokemons.length / itensPerPage);
+  const totalPages = Math.ceil(pokemons.length / itensPerPage);
   const startindex = currentPage * itensPerPage;
   const endIndex = startindex + itensPerPage;
   const startindexSubPage = currentSubPage * itensPerPage;
@@ -86,7 +86,7 @@ export const PokemonProvider = ({ children }: PokemonProviderData) => {
       value={{
         handleGetPokemons,
         pokemons,
-        pages,
+        totalPages,
         currentPokemons,
         setCurrentPage,
         currentPage,

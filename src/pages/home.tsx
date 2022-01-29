@@ -2,6 +2,7 @@ import { keyboard } from "@testing-library/user-event/dist/keyboard";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import Container from "../components/container";
+import ContainerCard from "../components/ContainerCard";
 import ContainerMain from "../components/ContainerMain";
 import Footer from "../components/footer";
 import Header from "../components/header";
@@ -9,6 +10,8 @@ import Header from "../components/header";
 import { usePokemon } from "../providers/pokemon";
 import { NamesPokemon, Pokemon } from "../providers/pokemon/pokemon.model";
 import { baseURL } from "../services/api";
+
+import { HeaderFiltro, Label, Select } from "./style";
 
 function Home() {
   const [search, setSearch] = useState<string>("");
@@ -67,14 +70,30 @@ function Home() {
 
       {search && (
         <Container>
-          {result && console.log("result:", result)}
-          <ContainerMain currentPokemons={achados} />
+          <ContainerCard>
+            <ContainerMain currentPokemons={achados} />
+          </ContainerCard>
         </Container>
       )}
 
       {!search[0] && (
         <Container>
-          <ContainerMain currentPokemons={currentPokemons} />
+          <ContainerCard>
+            <HeaderFiltro>
+              <Label>
+                Filtro
+                <Select defaultValue="filtro">
+                  <option value=""> all</option>
+                  <option value="value"> Fire</option>
+                  <option value="value"> Grass</option>
+                  <option value="value"> Normal</option>
+                  <option value="value"> bug</option>
+                  <option value="value"> poison</option>
+                </Select>
+              </Label>
+            </HeaderFiltro>
+            <ContainerMain currentPokemons={currentPokemons} />
+          </ContainerCard>
         </Container>
       )}
       <Footer />
