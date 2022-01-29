@@ -6,14 +6,16 @@ export interface PokemonProviderData{
 export interface PokemonContextData{
     handleGetPokemons : (defaultNumber?: number)=> void
     pokemons: any
-    totalPages: number
+    allNamesPokemon: any
+    
+   /* totalPages: number
     currentPokemons : Pokemon[]
     setCurrentPage: React.Dispatch<React.SetStateAction<number>>
     currentPage: number
     currentSubPage: number
     setCurrenSubtPage: React.Dispatch<React.SetStateAction<number>>
     numberPage: number
-    allNamesPokemon: any
+    */
 }
 export interface Pokemon{
     name: string

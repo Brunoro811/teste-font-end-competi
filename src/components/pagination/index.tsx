@@ -9,7 +9,7 @@ import previous from "../../assets/svg/previous.svg";
 interface PaginationProps {
   arrPages?: number[];
   totalPages?: number;
-  currentPage?: number;
+  currentPage: number;
   numberPagination?: number;
   setCurrentPage?: any;
   setCurrenSubtPage?: any;
@@ -23,8 +23,6 @@ function Pagination({
   setCurrentPage,
   setCurrenSubtPage,
 }: PaginationProps) {
-  const firstPositonArr = 0;
-  let lastPositonArr = 0;
   const walkArray = (array: any[], inicio: any, fim: any) => {
     let newArray = [];
     let diferenca = fim - inicio;
@@ -37,7 +35,6 @@ function Pagination({
         newArray.push(array[i]);
       }
     }
-    lastPositonArr = newArray[newArray.length - 1];
     return newArray;
   };
 

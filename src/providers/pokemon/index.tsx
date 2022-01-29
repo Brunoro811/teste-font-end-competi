@@ -20,16 +20,16 @@ export const PokemonProvider = ({ children }: PokemonProviderData) => {
   );
 
   const [pokemons, setPokemons] = useState<Pokemon[]>([]);
+
+  /*const [currentPokemons, setCurrentPokemons] = useState<Pokemon[]>([]);
   const [itensPerPage] = useState(6);
   const [currentPage, setCurrentPage] = useState(0);
   const [currentSubPage, setCurrenSubtPage] = useState<number>(0);
-
   const totalPages = Math.ceil(pokemons.length / itensPerPage);
   const startindex = currentPage * itensPerPage;
   const endIndex = startindex + itensPerPage;
   const startindexSubPage = currentSubPage * itensPerPage;
   const endIndexSubPage = startindexSubPage + itensPerPage;
-  const [currentPokemons, setCurrentPokemons] = useState<Pokemon[]>([]);
   const [numberPage, setNumberPage] = useState(1);
 
   useEffect(() => {
@@ -41,6 +41,7 @@ export const PokemonProvider = ({ children }: PokemonProviderData) => {
     setCurrentPokemons(pokemons.slice(startindexSubPage, endIndexSubPage));
     setNumberPage(currentSubPage);
   }, [currentSubPage, endIndexSubPage, pokemons, startindexSubPage]);
+  */
 
   const handleGetPokemons = async (defaultNumber: number = 6) => {
     let pokemonsList: Pokemon[] = [];
@@ -65,7 +66,7 @@ export const PokemonProvider = ({ children }: PokemonProviderData) => {
         .catch((error) => console.log(error.response.data));
     }
     setPokemons(pokemonsList);
-    setCurrentPokemons(pokemonsList.slice(0, 6));
+    //setCurrentPokemons(pokemonsList.slice(0, 6));
   };
 
   useEffect(() => {
@@ -86,14 +87,14 @@ export const PokemonProvider = ({ children }: PokemonProviderData) => {
       value={{
         handleGetPokemons,
         pokemons,
-        totalPages,
+        allNamesPokemon,
+        /*totalPages,
         currentPokemons,
         setCurrentPage,
         currentPage,
         currentSubPage,
         setCurrenSubtPage,
-        numberPage,
-        allNamesPokemon,
+        numberPage,*/
       }}
     >
       {children}
