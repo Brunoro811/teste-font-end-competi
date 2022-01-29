@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { usePokemon } from "../../providers/pokemon";
 import { Pokemon } from "../../providers/pokemon/pokemon.model";
 import ButtonPage from "../buttonPage";
@@ -27,6 +27,24 @@ function ContainerMain({ currentPokemons }: ContainerMainData) {
     setCurrenSubtPage,
     numberPage,
   } = usePokemon();
+
+  const arrPages = Array.from(Array(pages), (element, index) => index);
+  const [arrPagination, setArrPagination] = useState();
+
+  const walkArray = (array: any[], inicio: any, fim: any) => {
+    let newArray = [];
+    let diferenca = fim - inicio;
+    if (inicio + diferenca <= array.length - 1) {
+      for (let i = inicio; i <= fim; i++) {
+        newArray.push(array[i]);
+      }
+    } else {
+      for (let i = inicio; i < array.length; i++) {
+        newArray.push(array[i]);
+      }
+    }
+    return newArray;
+  };
 
   useEffect(() => {
     handleGetPokemons();
@@ -61,24 +79,27 @@ function ContainerMain({ currentPokemons }: ContainerMainData) {
           ))}
       </ContainerBody>
       <ContainerPagination>
-        <ButtonPage
-          onClick={(e) => setCurrentPage(currentPage - 1)}
-          isImage
-          image={previous}
-        />
-        {Array.from(Array(pages), (element, index) => index)
-          .slice(currentSubPage, currentSubPage + 3)
-          .map((element, index) => {
-            return (
-              <ButtonPage
-                key={index}
-                value={Number(currentPage + index)}
-                children={currentPage + index + 1}
-                onClick={(e) => setCurrenSubtPage(Number(e.target.value))}
-              />
-            );
-          })}
-        {numberPage + 1 < pages && (
+        {walkArray(arrPages, currentPage, currentPage + 2)[0] > 0 && (
+          <ButtonPage
+            onClick={(e) => setCurrentPage(currentPage - 1)}
+            isImage
+            image={previous}
+          />
+        )}
+        {walkArray(arrPages, currentPage, currentPage + 2).map(
+          (element, index) => (
+            <ButtonPage
+              key={index}
+              value={Number(currentPage + index)}
+              children={currentPage + index + 1}
+              onClick={(e) => setCurrenSubtPage(Number(e.target.value))}
+            />
+          )
+        )}
+        {walkArray(arrPages, currentPage, currentPage + 2)[
+          walkArray(arrPages, currentPage, currentPage + 2).length - 1
+        ] <
+          pages - 1 && (
           <ButtonPage
             onClick={(e) => setCurrentPage(currentPage + 1)}
             isImage

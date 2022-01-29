@@ -22,7 +22,7 @@ export const PokemonProvider = ({ children }: PokemonProviderData) => {
   const [pokemons, setPokemons] = useState<Pokemon[]>([]);
   const [itensPerPage] = useState(6);
   const [currentPage, setCurrentPage] = useState(0);
-  const [currentSubPage, setCurrenSubtPage] = useState(0);
+  const [currentSubPage, setCurrenSubtPage] = useState<number>(0);
 
   const pages = Math.ceil(pokemons.length / itensPerPage);
   const startindex = currentPage * itensPerPage;
@@ -44,7 +44,7 @@ export const PokemonProvider = ({ children }: PokemonProviderData) => {
 
   const handleGetPokemons = async (defaultNumber: number = 6) => {
     let pokemonsList: Pokemon[] = [];
-    for (let i = 1; i < 7; i++) {
+    for (let i = 1; i < 55; i++) {
       await axios
         .get(`${baseURL}/${i}/`)
         .then((response) => {

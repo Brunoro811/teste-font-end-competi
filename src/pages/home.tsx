@@ -5,7 +5,7 @@ import Container from "../components/container";
 import ContainerMain from "../components/ContainerMain";
 import Footer from "../components/footer";
 import Header from "../components/header";
-import Pagination from "../components/pagination";
+//import Pagination from "../components/pagination";
 import { usePokemon } from "../providers/pokemon";
 import { NamesPokemon, Pokemon } from "../providers/pokemon/pokemon.model";
 import { baseURL } from "../services/api";
@@ -77,7 +77,6 @@ function Home() {
           <ContainerMain currentPokemons={currentPokemons} />
         </Container>
       )}
-      <Pagination />
       <Footer />
     </>
   );

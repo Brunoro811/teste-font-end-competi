@@ -7,7 +7,7 @@ import {
 } from "../../providers/pokemon/pokemon.model";
 import { baseURL } from "../../services/api";
 
-import { POKEMON_COUNT } from "./actionsLocalStorage";
+const POKEMON_COUNT: string = "@PokemonCount";
 
 interface TotalRecords {
   count: number;
@@ -110,9 +110,6 @@ function Pagination() {
 
   return (
     <>
-      {totalRecords && console.log("totalRecords:", totalRecords)}
-      {totalPages && console.log("totalPages:", totalPages)}
-      {totalRecords && console.log("Array:", fetchPageNumbers())}
       <h1>Pagination</h1>
       <Fragment>
         <nav aria-label="Countries Pagination">
