@@ -8,75 +8,77 @@ import {
 import axios from "axios";
 
 import { baseURL } from "../../services/api";
+import { POKEMONS, POKEMONS_LINKS } from "../../services/localStorage";
 
 const PokemonContext = createContext<PokemonContextData>(
   {} as PokemonContextData
 );
 
 export const PokemonProvider = ({ children }: PokemonProviderData) => {
-  const [pokemons, setPokemons] = useState<Pokemon[]>([]);
-  const [itensPerPage] = useState(6);
-  const [currentPage, setCurrentPage] = useState(0);
-  const [currentSubPage, setCurrenSubtPage] = useState(0);
-
-  const pages = Math.ceil(pokemons.length / itensPerPage);
-
-  const startindex = currentPage * itensPerPage;
-  const endIndex = startindex + itensPerPage;
-  const startindexSubPage = currentSubPage * itensPerPage;
-  const endIndexSubPage = startindexSubPage + itensPerPage;
-
-  const [currentPokemons, setCurrentPokemons] = useState<Pokemon[]>([]);
-  const [numberPage, setNumberPage] = useState(1);
+  const [allNamesPokemon, setAllNamesPokemon] = useState(
+    JSON.parse(localStorage.getItem(POKEMONS_LINKS) || "{}")
+  );
+  const [pokemons, setPokemons] = useState<Pokemon[]>(
+    localStorage.getItem(POKEMONS)
+      ? JSON.parse(localStorage.getItem(POKEMONS) || "")
+      : []
+  );
 
   useEffect(() => {
-    setCurrentPokemons(pokemons.slice(startindex, endIndex));
-    setNumberPage(currentPage);
-  }, [currentPage, endIndex, pokemons, startindex]);
-
-  useEffect(() => {
-    setCurrentPokemons(pokemons.slice(startindexSubPage, endIndexSubPage));
-    setNumberPage(currentSubPage);
-  }, [currentSubPage, endIndexSubPage, pokemons, startindexSubPage]);
-
-  const handleGetPokemons = async (defaultNumber: number = 6) => {
-    let pokemonsList: Pokemon[] = [];
-    for (let i = 1; i < 55; i++) {
-      await axios
-        .get(`${baseURL}/${i}/`)
-        .then((response) => {
-          const {
-            name,
-            order,
-            types,
-            sprites: { front_default },
-          } = response.data;
-          const newPokemon: Pokemon = {
-            name: name,
-            order: order,
-            types: types[0].type.name,
-            image: front_default,
-          };
-          pokemonsList.push(newPokemon);
-        })
-        .catch((error) => console.log(error.response.data));
+    async function load() {
+      if (!allNamesPokemon.count) {
+        await axios
+          .get(`${baseURL}?limit=1118&offset=0`)
+          .then((response) => {
+            localStorage.setItem(POKEMONS_LINKS, JSON.stringify(response.data));
+            setAllNamesPokemon(response.data);
+          })
+          .catch((error) => console.log(error.response.data));
+      }
     }
-    setPokemons(pokemonsList);
-    setCurrentPokemons(pokemonsList.slice(0, 6));
-  };
+    load();
+  }, [allNamesPokemon]);
+
+  useEffect(() => {
+    async function loadPokemon() {
+      let pokemonsList: Pokemon[] = [];
+      if (!pokemons[0]) {
+        if (allNamesPokemon.count) {
+          const { results } = allNamesPokemon;
+          for (let i = 0; i < results.length; i++) {
+            await axios
+              .get(`${results[i].url}`)
+              .then((response) => {
+                const {
+                  name,
+                  id,
+                  types,
+                  sprites: { front_default },
+                } = response.data;
+                const newPokemon: Pokemon = {
+                  name: name,
+                  id: id,
+                  types: types[0].type.name,
+                  image: front_default,
+                };
+                pokemonsList.push(newPokemon);
+              })
+              .catch((error) => console.log(error.response.data));
+          }
+          setPokemons(pokemonsList);
+          localStorage.setItem(POKEMONS, JSON.stringify(pokemonsList));
+        }
+      }
+    }
+    loadPokemon();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [allNamesPokemon]);
 
   return (
     <PokemonContext.Provider
       value={{
-        handleGetPokemons,
         pokemons,
-        pages,
-        currentPokemons,
-        setCurrentPage,
-        currentPage,
-        currentSubPage,
-        setCurrenSubtPage,
-        numberPage,
+        allNamesPokemon,
       }}
     >
       {children}

@@ -1,3 +1,4 @@
+import React from "react";
 import { CardPokemonData } from "./cardPokemon.model";
 
 import "./cardpokemon.css";

@@ -1,27 +1,33 @@
-import React, { ReactNode } from "react";
-import { number } from "yup";
+import { ReactNode } from "react";
+import { string } from "yup";
 
 export interface PokemonProviderData{
     children: ReactNode
 }
 export interface PokemonContextData{
-    handleGetPokemons : (defaultNumber?: number)=> void
     pokemons: any
-    pages: number
-    currentPokemons : Pokemon[]
-    setCurrentPage: React.Dispatch<React.SetStateAction<number>>
-    currentPage: number
-    currentSubPage: number
-    setCurrenSubtPage: React.Dispatch<React.SetStateAction<number>>
-    numberPage: number
+    allNamesPokemon: any
 }
 export interface Pokemon{
     name: string
-    order: number
-    types: any
+    id: number
+    types: string
     image: string
 }
 export interface PagesOfPokemons {
     page: number 
-    pokemons: Pokemon[]
+    url: string
+}
+export interface NamesPokemon{
+    name: string,
+    link: string
+    next?: null,
+    previous?: null
+    results: any
+}
+export interface PokemonNameURL{
+    pokemon: {
+        name:string,
+        url:string},
+    url?: string
 }
