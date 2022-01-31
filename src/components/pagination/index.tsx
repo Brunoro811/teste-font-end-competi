@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 
 import ButtonPage from "../buttonPage";
 import { ContainerPagination } from "../ContainerMain/style";
@@ -6,14 +6,7 @@ import { ContainerPagination } from "../ContainerMain/style";
 import next from "../../assets/svg/next.svg";
 import previous from "../../assets/svg/previous.svg";
 
-interface PaginationProps {
-  arrPages?: number[];
-  totalPages?: number;
-  currentPage: number;
-  numberPagination?: number;
-  setCurrentPage?: any;
-  setCurrenSubtPage?: any;
-}
+import { PaginationProps } from "./pagination.model";
 
 function Pagination({
   arrPages = [1, 2, 3, 4, 5, 6],

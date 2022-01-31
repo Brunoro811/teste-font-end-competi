@@ -1,22 +1,17 @@
 import { useEffect, useState } from "react";
+
 import { usePokemon } from "../../providers/pokemon";
-import { Pokemon } from "../../providers/pokemon/pokemon.model";
 import CardPokemon from "../cardPokemon";
-import { ContainerBody, Page } from "./style";
-import { ContainerMainData } from "./containerMain.model";
 import Pagination from "../pagination";
 
+import { ContainerMainData } from "./containerMain.model";
+import { Pokemon } from "../../providers/pokemon/pokemon.model";
+
+import { ContainerBody, Page, P } from "./style";
+
 function ContainerMain({ pokemons, itemsForPage = 6 }: ContainerMainData) {
-  const {
-    handleGetPokemons,
-    /*totalPages,
-    setCurrentPage,
-    currentPage,
-    setCurrenSubtPage,
-    numberPage,*/
-  } = usePokemon();
-  //const [currentPokemons, setCurrentPokemons] = useState<Pokemon[]>([]);
-  const [currentPokemons, setCurrentPokemons] = useState<Pokemon[]>();
+  const { handleGetPokemons } = usePokemon();
+  const [currentPokemons, setCurrentPokemons] = useState<Pokemon[]>([]);
   const itensPerPage = itemsForPage;
   const [currentPage, setCurrentPage] = useState(0);
   const [currentSubPage, setCurrenSubtPage] = useState<number>(0);
@@ -48,12 +43,13 @@ function ContainerMain({ pokemons, itemsForPage = 6 }: ContainerMainData) {
   const arrPages = Array.from(Array(totalPages), (element, index) => index);
   useEffect(() => {
     handleGetPokemons();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   return (
     <>
       <Page>Pagina: {numberPage + 1}</Page>
       <ContainerBody>
-        {currentPokemons &&
+        {currentPokemons[0] &&
           currentPokemons.map((element: Pokemon, index: number) => (
             <CardPokemon
               key={element.name}
@@ -65,14 +61,20 @@ function ContainerMain({ pokemons, itemsForPage = 6 }: ContainerMainData) {
             />
           ))}
       </ContainerBody>
-      <Pagination
-        arrPages={arrPages}
-        currentPage={currentPage}
-        numberPagination={2}
-        setCurrenSubtPage={setCurrenSubtPage}
-        setCurrentPage={setCurrentPage}
-        totalPages={totalPages}
-      />
+      {console.log(currentPage)}
+      {currentPokemons[0] && (
+        <Pagination
+          arrPages={arrPages}
+          currentPage={currentPage}
+          numberPagination={2}
+          setCurrenSubtPage={setCurrenSubtPage}
+          setCurrentPage={setCurrentPage}
+          totalPages={totalPages}
+        />
+      )}
+      {!currentPokemons[0] && (
+        <P>Desculpa não encontramos nenhum pokemon com este nome.</P>
+      )}
     </>
   );
 }

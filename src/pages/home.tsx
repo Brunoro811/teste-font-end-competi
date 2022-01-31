@@ -60,7 +60,7 @@ function Home() {
         handleSearchPokemonForName={handleSearchPokemonForName}
         onChange={setSearch}
       />
-      {search && achados[0] && (
+      {search && (
         <Container>
           <ContainerCard>
             <ContainerMain pokemons={achados} />

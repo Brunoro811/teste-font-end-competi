@@ -1,6 +1,6 @@
 export interface CardPokemonData{
     number?:  number
-    type?: string
+    type: string
     image?: any
     alt? : string
     name?: string

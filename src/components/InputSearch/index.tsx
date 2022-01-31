@@ -22,7 +22,7 @@ function InputSearch({
   return (
     <Input
       id="filtroBusca"
-      //{...rest}
+      {...rest}
       value={displayValue}
       onChange={handleChange}
       placeholder={placeholder}

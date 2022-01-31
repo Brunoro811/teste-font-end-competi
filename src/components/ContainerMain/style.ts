@@ -2,7 +2,6 @@ import styled from "styled-components";
 
 export const Container = styled.main`
     width: 95%;
-   // height: 500px;
     max-width: 1140px;
     margin: 0 auto;
     border-radius: 5px;
@@ -11,7 +10,7 @@ export const Container = styled.main`
 `
 
 export const ContainerBody = styled.div`
-    //width: 100%;
+
     padding-top: 50px ;
     width: 100%;
     max-width: 750px;
@@ -42,4 +41,9 @@ export const Page = styled.p`
     width: 100%;
     max-width: 750px;
     padding: 10px;
+`
+export const P = styled.p`
+    width: 100%;
+    padding: 20px;
+    text-align: center;
 `
