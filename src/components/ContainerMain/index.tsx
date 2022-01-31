@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 
-import { usePokemon } from "../../providers/pokemon";
 import CardPokemon from "../cardPokemon";
 import Pagination from "../pagination";
 
@@ -10,7 +9,6 @@ import { Pokemon } from "../../providers/pokemon/pokemon.model";
 import { ContainerBody, Page, P } from "./style";
 
 function ContainerMain({ pokemons, itemsForPage = 6 }: ContainerMainData) {
-  const { handleGetPokemons } = usePokemon();
   const [currentPokemons, setCurrentPokemons] = useState<Pokemon[]>([]);
   const itensPerPage = itemsForPage;
   const [currentPage, setCurrentPage] = useState(0);
@@ -41,13 +39,10 @@ function ContainerMain({ pokemons, itemsForPage = 6 }: ContainerMainData) {
   }, [currentSubPage, endIndexSubPage, pokemons, startindexSubPage]);
 
   const arrPages = Array.from(Array(totalPages), (element, index) => index);
-  useEffect(() => {
-    handleGetPokemons();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
   return (
     <>
       <Page>Pagina: {numberPage + 1}</Page>
+      <Page>Total Paginas: {totalPages + 1}</Page>
       <ContainerBody>
         {currentPokemons[0] &&
           currentPokemons.map((element: Pokemon, index: number) => (
@@ -61,7 +56,6 @@ function ContainerMain({ pokemons, itemsForPage = 6 }: ContainerMainData) {
             />
           ))}
       </ContainerBody>
-      {console.log(currentPage)}
       {currentPokemons[0] && (
         <Pagination
           arrPages={arrPages}

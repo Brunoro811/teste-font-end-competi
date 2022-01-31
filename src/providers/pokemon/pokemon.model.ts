@@ -1,10 +1,10 @@
 import { ReactNode } from "react";
+import { string } from "yup";
 
 export interface PokemonProviderData{
     children: ReactNode
 }
 export interface PokemonContextData{
-    handleGetPokemons : (defaultNumber?: number)=> void
     pokemons: any
     allNamesPokemon: any
 }
@@ -16,12 +16,18 @@ export interface Pokemon{
 }
 export interface PagesOfPokemons {
     page: number 
-    link: string
+    url: string
 }
 export interface NamesPokemon{
     name: string,
     link: string
     next?: null,
     previous?: null
-    results?: any
+    results: any
+}
+export interface PokemonNameURL{
+    pokemon: {
+        name:string,
+        url:string},
+    url?: string
 }

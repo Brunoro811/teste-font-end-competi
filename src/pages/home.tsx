@@ -1,4 +1,3 @@
-import axios from "axios";
 import { useEffect, useState } from "react";
 import Container from "../components/container";
 import ContainerCard from "../components/ContainerCard";
@@ -6,51 +5,37 @@ import ContainerMain from "../components/ContainerMain";
 import Footer from "../components/footer";
 import Header from "../components/header";
 import { usePokemon } from "../providers/pokemon";
-import { NamesPokemon, Pokemon } from "../providers/pokemon/pokemon.model";
+import { Pokemon } from "../providers/pokemon/pokemon.model";
 
 import { HeaderFiltro, Label, Select } from "./style";
 
 function Home() {
   const [search, setSearch] = useState<string>("");
-  const { allNamesPokemon, pokemons } = usePokemon();
+  const { pokemons } = usePokemon();
+  const [pokemonList, setPokemonList] = useState(pokemons);
   const [achados, setAchados] = useState<Pokemon[]>([]);
-  const handleSearchPokemonForName = async () => {
-    let pokemonsList: Pokemon[] = [];
-    if (search) {
-      const resultForName: any[] = allNamesPokemon.results.filter(
-        (element: NamesPokemon, index: number) => {
-          if (element.name.includes(search)) {
-            return element;
-          }
-        }
+
+  const handleSearchPokemonForName = () => {
+    setAchados(
+      pokemons.filter((element: Pokemon) => element.name.includes(search))
+    );
+  };
+
+  const handleSearchPokemonForType = (type: string) => {
+    if (type !== "") {
+      setPokemonList(
+        pokemons.filter((element: Pokemon) => element.types.includes(type))
       );
-      for (let i = 0; i < resultForName.length; i++) {
-        await axios
-          .get(`${resultForName[i].url}`)
-          .then((response) => {
-            const {
-              name,
-              id,
-              types,
-              sprites: { front_default },
-            } = response.data;
-            const newPokemon: Pokemon = {
-              name: name,
-              id: id,
-              types: types[0].type.name,
-              image: front_default,
-            };
-            pokemonsList.push(newPokemon);
-          })
-          .catch((error) => console.log(error.response.data));
-        console.log("Lista de Pokemons Achados fora map", pokemonsList);
-      }
-      setAchados(pokemonsList);
+    } else {
+      setPokemonList(pokemons);
     }
   };
 
   useEffect(() => {
-    handleSearchPokemonForName();
+    if (search) {
+      handleSearchPokemonForName();
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [search]);
 
   return (
@@ -63,28 +48,47 @@ function Home() {
       {search && (
         <Container>
           <ContainerCard>
+            <HeaderFiltro>
+              <Label>
+                Filtro
+                <Select
+                  defaultValue={"all"}
+                  onChange={(e) => handleSearchPokemonForType(e.target.value)}
+                >
+                  <option value=""> all</option>
+                  <option value="fire"> Fire</option>
+                  <option value="grass"> Grass</option>
+                  <option value="normal"> Normal</option>
+                  <option value="bug"> bug</option>
+                  <option value="poison"> poison</option>
+                </Select>
+              </Label>
+            </HeaderFiltro>
             <ContainerMain pokemons={achados} />
           </ContainerCard>
         </Container>
       )}
 
-      {!search[0] && (
+      {!search && (
         <Container>
           <ContainerCard>
             <HeaderFiltro>
               <Label>
                 Filtro
-                <Select defaultValue="filtro">
+                <Select
+                  defaultValue={"all"}
+                  onChange={(e) => handleSearchPokemonForType(e.target.value)}
+                >
                   <option value=""> all</option>
-                  <option value="value"> Fire</option>
-                  <option value="value"> Grass</option>
-                  <option value="value"> Normal</option>
-                  <option value="value"> bug</option>
-                  <option value="value"> poison</option>
+                  <option value="fire"> Fire</option>
+                  <option value="grass"> Grass</option>
+                  <option value="normal"> Normal</option>
+                  <option value="bug"> bug</option>
+                  <option value="poison"> poison</option>
                 </Select>
               </Label>
             </HeaderFiltro>
-            <ContainerMain pokemons={pokemons} />
+            <ContainerMain pokemons={pokemonList} />
           </ContainerCard>
         </Container>
       )}
