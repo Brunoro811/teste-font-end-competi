@@ -53,6 +53,8 @@ function ContainerMain({ pokemons, itemsForPage = 6 }: ContainerMainData) {
               alt={element.name}
               number={element.id}
               image={element.image}
+              abilities={element.abilities}
+              stats={element.stats}
             />
           ))}
       </ContainerBody>

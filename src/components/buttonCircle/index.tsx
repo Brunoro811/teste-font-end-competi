@@ -3,13 +3,19 @@ interface ButtonCircleData {
   alt?: string;
   image?: string;
   color?: string | undefined;
+  callback: () => void;
 }
 export interface ButtonCircleProps {
   color: string;
 }
-function ButtonCircle({ image = "", alt = "", color = "" }: ButtonCircleData) {
+function ButtonCircle({
+  image = "",
+  alt = "",
+  color = "",
+  callback,
+}: ButtonCircleData) {
   return (
-    <Button color={color}>
+    <Button onClick={() => callback()} color={color}>
       <Image src={image} alt={alt} />
     </Button>
   );

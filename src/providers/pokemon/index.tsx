@@ -54,12 +54,16 @@ export const PokemonProvider = ({ children }: PokemonProviderData) => {
                   id,
                   types,
                   sprites: { front_default },
+                  abilities,
+                  stats,
                 } = response.data;
                 const newPokemon: Pokemon = {
                   name: name,
                   id: id,
                   types: types[0].type.name,
                   image: front_default,
+                  abilities: abilities,
+                  stats: stats,
                 };
                 pokemonsList.push(newPokemon);
               })
