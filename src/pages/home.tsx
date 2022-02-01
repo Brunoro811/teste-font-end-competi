@@ -38,6 +38,15 @@ function Home() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [search]);
 
+  useEffect(() => {
+    if (pokemonList[0]) {
+      setAchados(
+        pokemons.filter((element: Pokemon) => element.name.includes(search))
+      );
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [pokemonList]);
+
   return (
     <>
       <Header
@@ -49,6 +58,7 @@ function Home() {
         <Container>
           <ContainerCard>
             <HeaderFiltro>
+              {pokemonList[0] && console.log("pokemonslit", pokemonList)}
               <Label>
                 Filtro
                 <Select
@@ -88,7 +98,7 @@ function Home() {
                 </Select>
               </Label>
             </HeaderFiltro>
-            <ContainerMain pokemons={pokemonList} />
+            <ContainerMain pokemons={pokemons} />
           </ContainerCard>
         </Container>
       )}

@@ -105,5 +105,6 @@ export const DivName = styled.div`
         color: #ffffff;
         font-size: 20px;
         line-height: 50px;
+        text-transform: capitalize;
     }
 `
