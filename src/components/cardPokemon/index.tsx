@@ -26,6 +26,8 @@ function CardPokemon({
   image,
   name = "name",
   alt = "alt",
+  stats,
+  abilities,
 }: CardPokemonData) {
   const [isCardDetails, setIsCardDetails] = useState<boolean>(false);
   const handleViewDetails = () => setIsCardDetails(!isCardDetails);
@@ -66,7 +68,10 @@ function CardPokemon({
           image={image}
           alt={image}
           name={name}
+          type={type}
+          abilities={abilities}
           callback={handleViewDetails}
+          stats={stats}
         />
       )}
     </>
