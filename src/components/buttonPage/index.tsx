@@ -4,7 +4,7 @@ interface ButtonPageData {
   children?: number;
   isImage?: boolean;
   image?: string;
-  onClick?: (e: any) => void;
+  onClick?: (e: React.ChangeEvent<HTMLInputElement | any>) => void;
   value?: number;
 }
 function ButtonPage({

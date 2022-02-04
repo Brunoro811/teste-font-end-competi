@@ -14,42 +14,13 @@ import {
   ContainerAbilities,
 } from "./style";
 import close from "../../assets/svg/close.png";
-
-interface CardDetailsData {
-  callback: () => void;
-  image: string;
-  alt: string;
-  name: string;
-  type: string;
-  abilities: [
-    {
-      ability: {
-        name: string;
-        url: string;
-      };
-    }
-  ];
-  stats: [
-    {
-      base_stat: number;
-      effort: number;
-      stat: {
-        name: string;
-        url: string;
-      };
-    }
-  ];
-}
-export interface RowStatsProps {
-  name: string;
-  base_stat: number;
-}
+import { CardDetailsData } from "./cardDetails.model";
 
 function ContainerDetails({
   callback,
   image,
   alt,
-  type,
+  types,
   name,
   stats,
   abilities,
@@ -58,7 +29,7 @@ function ContainerDetails({
     <ContainerBlack>
       <Container>
         <CardPokemon>
-          <SpanType type={type}>{type}</SpanType>
+          <SpanType type={types}>{types}</SpanType>
           <Image src={image} alt={alt} />
           <ButtonCircle
             callback={callback}

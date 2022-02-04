@@ -83,6 +83,7 @@ export const PokemonProvider = ({ children }: PokemonProviderData) => {
       value={{
         pokemons,
         allNamesPokemon,
+        setPokemons,
       }}
     >
       {children}

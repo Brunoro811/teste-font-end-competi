@@ -1,28 +1,12 @@
-export interface CardPokemonData{
-    number?:  number
-    type: string
-    image?: any
-    alt? : string
-    name?: string
-    abilities: [
-        {
-          ability: {
-            name: string;
-            url: string;
-          };
-        }
-      ]
-      stats: [
-        {
-            base_stat: number,
-            effort: number,
-            stat: {
-            name: string,
-            url: string
-            }
-          }
-      ]
+import { Pokemon } from "../../providers/pokemon/pokemon.model"
+
+export interface PokemonDetails extends Pokemon {
+  alt? : string
+}
+
+export interface CardPokemonData extends PokemonDetails {
+  callbackAdd: (e:PokemonDetails)=> void
 }
 export interface SpanTypePokemonProps{
     type: string
-}
+} 

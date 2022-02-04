@@ -1,4 +1,4 @@
-import { Button, Image } from "./style";
+import { Button } from "./style";
 interface ButtonCircleData {
   alt?: string;
   image?: string;
@@ -16,7 +16,7 @@ function ButtonCircle({
 }: ButtonCircleData) {
   return (
     <Button onClick={() => callback()} color={color}>
-      <Image src={image} alt={alt} />
+      <img src={image} alt={alt} />
     </Button>
   );
 }

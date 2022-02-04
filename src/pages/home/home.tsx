@@ -1,19 +1,30 @@
 import { useEffect, useState } from "react";
-import Container from "../components/container";
-import ContainerCard from "../components/ContainerCard";
-import ContainerMain from "../components/ContainerMain";
-import Footer from "../components/footer";
-import Header from "../components/header";
-import { usePokemon } from "../providers/pokemon";
-import { Pokemon } from "../providers/pokemon/pokemon.model";
+import Container from "../../components/container";
+import ContainerCard from "../../components/ContainerCard";
+import ContainerMain from "../../components/ContainerMain";
+import Footer from "../../components/footer";
+import Header from "../../components/header";
+import InformationModal from "../../components/modal/information";
+import { usePokemon } from "../../providers/pokemon";
+import { Pokemon } from "../../providers/pokemon/pokemon.model";
+import { useUser } from "../../providers/user";
 
 import { HeaderFiltro, Label, Select } from "./style";
+export interface UserData {
+  name: string;
+  password: string;
+  pokedex: [any];
+}
 
 function Home() {
   const [search, setSearch] = useState<string>("");
-  const { pokemons } = usePokemon();
-  const [pokemonList, setPokemonList] = useState(pokemons);
+  const { pokemons, setPokemons } = usePokemon();
+  //const [pokemonList, setPokemonList] = useState(pokemons);
   const [achados, setAchados] = useState<Pokemon[]>([]);
+
+  const { isInformation, setIsInformation, handleAddPokemon } = useUser();
+  const handleInformation = () => setIsInformation(!isInformation);
+  const [backupPokemon, setBackupPokemon] = useState(pokemons);
 
   const handleSearchPokemonForName = () => {
     setAchados(
@@ -23,11 +34,11 @@ function Home() {
 
   const handleSearchPokemonForType = (type: string) => {
     if (type !== "") {
-      setPokemonList(
+      setBackupPokemon(
         pokemons.filter((element: Pokemon) => element.types.includes(type))
       );
     } else {
-      setPokemonList(pokemons);
+      setBackupPokemon(pokemons);
     }
   };
 
@@ -35,17 +46,20 @@ function Home() {
     if (search) {
       handleSearchPokemonForName();
     }
+    if (!search) {
+      setBackupPokemon(pokemons);
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [search]);
 
-  useEffect(() => {
+  /* useEffect(() => {
     if (pokemonList[0]) {
       setAchados(
         pokemons.filter((element: Pokemon) => element.name.includes(search))
       );
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [pokemonList]);
+  }, [pokemonList]);*/
 
   return (
     <>
@@ -57,8 +71,7 @@ function Home() {
       {search && (
         <Container>
           <ContainerCard>
-            <HeaderFiltro>
-              {pokemonList[0] && console.log("pokemonslit", pokemonList)}
+            {/*<HeaderFiltro>
               <Label>
                 Filtro
                 <Select
@@ -73,8 +86,8 @@ function Home() {
                   <option value="poison"> poison</option>
                 </Select>
               </Label>
-            </HeaderFiltro>
-            <ContainerMain pokemons={achados} />
+            </HeaderFiltro>*/}
+            <ContainerMain callbackAdd={handleAddPokemon} pokemons={achados} />
           </ContainerCard>
         </Container>
       )}
@@ -98,11 +111,17 @@ function Home() {
                 </Select>
               </Label>
             </HeaderFiltro>
-            <ContainerMain pokemons={pokemons} />
+            <ContainerMain
+              callbackAdd={handleAddPokemon}
+              pokemons={backupPokemon}
+            />
           </ContainerCard>
         </Container>
       )}
       <Footer />
+      {isInformation && (
+        <InformationModal handleIsInformation={handleInformation} />
+      )}
     </>
   );
 }

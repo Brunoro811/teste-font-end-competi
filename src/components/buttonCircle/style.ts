@@ -3,6 +3,7 @@ import { ButtonCircleProps } from ".";
 
 export const Button = styled.button<ButtonCircleProps>`
     width: 45px;
+    margin: 5px;
     height: 45px;
     border: none;
     border-radius: 100%;
@@ -13,11 +14,8 @@ export const Button = styled.button<ButtonCircleProps>`
     background-color : ${props=> props.color || "#49DBDF"};
 
     :hover{
-        border: 2px solid #ffffff;
+        border: 2px solid #000;
     }
     
     
-`
-export const Image = styled.img`
-    width: 30px;
 `

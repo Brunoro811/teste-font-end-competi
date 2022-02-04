@@ -9,7 +9,6 @@ export const Container = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    
     `
     export const DivHoverOptions = styled.div`
         width: 200px;
@@ -59,7 +58,8 @@ export const SpanType = styled.span<SpanTypePokemonProps>`
             default:
                 return "background-color: #020202;"
           }
-    }}
+    }
+    }
   
     color: #ffffff;
     position: absolute;
