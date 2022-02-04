@@ -46,7 +46,7 @@ function ContainerMain({
   return (
     <>
       <Page>Pagina: {numberPage + 1}</Page>
-      <Page>Total Paginas: {totalPages + 1}</Page>
+      <Page>Total de Páginas: {totalPages + 1}</Page>
       <ContainerBody>
         {currentPokemons[0] &&
           currentPokemons.map((element: Pokemon, index: number) => (

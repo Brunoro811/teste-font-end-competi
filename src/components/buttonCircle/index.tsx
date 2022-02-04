@@ -3,7 +3,7 @@ interface ButtonCircleData {
   alt?: string;
   image?: string;
   color?: string | undefined;
-  callback: () => void;
+  callback: (e: any) => void;
 }
 export interface ButtonCircleProps {
   color: string;
@@ -15,7 +15,7 @@ function ButtonCircle({
   callback,
 }: ButtonCircleData) {
   return (
-    <Button onClick={() => callback()} color={color}>
+    <Button onClick={(e) => callback(e)} color={color}>
       <img src={image} alt={alt} />
     </Button>
   );
