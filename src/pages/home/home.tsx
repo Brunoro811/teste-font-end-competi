@@ -6,8 +6,8 @@ import { usePokemon } from "../../providers/pokemon";
 
 import ItemCarrosel from "../../components/itemCarrosel";
 import Container from "../../components/container";
-import ContainerCard from "../../components/ContainerCard";
-import ContainerMain from "../../components/ContainerMain";
+import ContainerCard from "../../components/containerCard";
+import ContainerMain from "../../components/containerMain";
 import Footer from "../../components/footer";
 import Header from "../../components/header";
 import InformationModal from "../../components/modal/information";
