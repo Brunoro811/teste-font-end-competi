@@ -91,7 +91,7 @@ export const SpanNumber = styled.span`
     top: 12px;
     left: 11px;
     z-index: 1;
-    `
+`
 export const DivName = styled.div`
     position: absolute;
     width: 145px;
