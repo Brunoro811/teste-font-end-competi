@@ -21,13 +21,14 @@ import add from "../../assets/svg/add.svg";
 import ContainerDetails from "../cardDetails";
 
 function CardPokemon({
-  number = 0,
-  type = "type",
+  id = 0,
+  types = "type",
   image,
   name = "name",
   alt = "alt",
   stats,
   abilities,
+  callbackAdd,
 }: CardPokemonData) {
   const [isCardDetails, setIsCardDetails] = useState<boolean>(false);
   const handleViewDetails = () => setIsCardDetails(!isCardDetails);
@@ -35,8 +36,8 @@ function CardPokemon({
     <>
       <Container>
         <DivRotate></DivRotate>
-        <SpanNumber>{number}</SpanNumber>
-        <SpanType type={type}>{type}</SpanType>
+        <SpanNumber>{id}</SpanNumber>
+        <SpanType type={types}>{types}</SpanType>
 
         <ContainerHover className="options">
           <DivHoverOptions className="hover">
@@ -46,7 +47,16 @@ function CardPokemon({
               alt={"view pokemon"}
             />
             <ButtonCircle
-              callback={() => {}}
+              callback={() =>
+                callbackAdd({
+                  id: id,
+                  name: name,
+                  image: image,
+                  types: types,
+                  stats: stats,
+                  abilities: abilities,
+                })
+              }
               color="#3AA05B"
               image={add}
               alt={"add pokemon"}
@@ -62,13 +72,13 @@ function CardPokemon({
           <p>{name}</p>
         </DivName>
       </Container>
-      {isCardDetails && console.log("Atvido")}
       {isCardDetails && (
         <ContainerDetails
+          id={id}
           image={image}
           alt={image}
           name={name}
-          type={type}
+          types={types}
           abilities={abilities}
           callback={handleViewDetails}
           stats={stats}

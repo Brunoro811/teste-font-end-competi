@@ -1,5 +1,3 @@
-import React from "react";
-
 import ButtonPage from "../buttonPage";
 import { ContainerPagination } from "../ContainerMain/style";
 
@@ -14,9 +12,9 @@ function Pagination({
   currentPage = 0,
   numberPagination = 2,
   setCurrentPage,
-  setCurrenSubtPage,
+  setCurrentSubPage,
 }: PaginationProps) {
-  const walkArray = (array: any[], inicio: any, fim: any) => {
+  const walkArray = (array: number[], inicio: number, fim: number) => {
     let newArray = [];
     let diferenca = fim - inicio;
     if (inicio + diferenca <= array.length - 1) {
@@ -48,7 +46,7 @@ function Pagination({
             key={index}
             value={Number(currentPage + index)}
             children={currentPage + index + 1}
-            onClick={(e) => setCurrenSubtPage(Number(e.target.value))}
+            onClick={(e) => setCurrentSubPage(Number(e.target.value))}
           />
         )
       )}
@@ -58,7 +56,7 @@ function Pagination({
       ] <
         totalPages - 1 && (
         <ButtonPage
-          onClick={(e) => setCurrentPage(currentPage + 1)}
+          onClick={() => setCurrentPage(currentPage + 1)}
           isImage
           image={next}
         />

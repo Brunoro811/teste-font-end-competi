@@ -1,6 +1,5 @@
 import styled from "styled-components";
-import { RowStatsProps } from ".";
-import ButtonCircle from "../buttonCircle";
+import { RowStatsProps } from "./cardDetails.model";
 import { SpanTypePokemonProps } from "../cardPokemon/cardPokemon.model";
 
 
@@ -10,13 +9,14 @@ export const ContainerBlack = styled.div`
     background-color: rgba(0,0,0,0.4);
     position: fixed;
     top: 0px;
+    left: 0;
     z-index: 2;
 `
 
 export const  Container = styled.div`
     margin: 0 auto;
     position: relative;
-    top: 30px;
+    top: 40px;
     display: flex;
     flex-direction: column;
     align-items: center;

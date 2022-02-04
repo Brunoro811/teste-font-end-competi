@@ -1,12 +1,12 @@
 import { ReactNode } from "react";
-import { string } from "yup";
 
 export interface PokemonProviderData{
     children: ReactNode
 }
 export interface PokemonContextData{
-    pokemons: any
-    allNamesPokemon: any
+    pokemons: Pokemon[]
+    allNamesPokemon: NamesPokemon
+    setPokemons: React.Dispatch<React.SetStateAction<Pokemon[]>>
 }
 export interface Pokemon{
     name: string
@@ -32,20 +32,14 @@ export interface Pokemon{
           }
       ]
 }
-export interface PagesOfPokemons {
-    page: number 
-    url: string
-}
 export interface NamesPokemon{
     name: string,
     link: string
     next?: null,
     previous?: null
-    results: any
+    results: PokemonNameURL[]
 }
 export interface PokemonNameURL{
-    pokemon: {
-        name:string,
-        url:string},
-    url?: string
+    name:string,
+    url:string
 }

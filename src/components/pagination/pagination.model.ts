@@ -3,6 +3,6 @@ export interface PaginationProps {
     totalPages?: number;
     currentPage: number;
     numberPagination?: number;
-    setCurrentPage?: any;
-    setCurrenSubtPage?: any;
+    setCurrentPage: React.Dispatch<React.SetStateAction<number>>
+    setCurrentSubPage: React.Dispatch<React.SetStateAction<number>>
   }

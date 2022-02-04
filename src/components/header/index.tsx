@@ -6,20 +6,18 @@ import competi from "../../assets/svg/logoCompeti.svg";
 
 import { ContainerHeader, DivRow } from "./style";
 import React from "react";
+import { useUser } from "../../providers/user";
+import { Link } from "react-router-dom";
+import ButtonAction from "../buttonAction";
 
 interface HeaderProps {
-  isLoged?: boolean;
   value: string;
   onChange: React.Dispatch<React.SetStateAction<string>>;
   handleSearchPokemonForName?: () => void;
 }
 
-function Header({
-  isLoged = false,
-  value,
-  onChange,
-  handleSearchPokemonForName,
-}: HeaderProps) {
+function Header({ value, onChange, handleSearchPokemonForName }: HeaderProps) {
+  const { isLogged, userLogged, handleLogout } = useUser();
   return (
     <ContainerHeader>
       <img src={pokemonSvg} alt="Pokemon Api Site!" />
@@ -30,8 +28,15 @@ function Header({
         functionSearch={handleSearchPokemonForName}
       />
       <DivRow>
-        {!isLoged && <LinkButton tolink="/" value="Login" />}
-        {isLoged && <span>usuário</span>}
+        {!isLogged && <LinkButton tolink="/login" value="Login" />}
+        {isLogged && (
+          <>
+            <Link to="/dashboard">
+              <ButtonAction value={userLogged.name} />
+            </Link>
+            <ButtonAction onClick={() => handleLogout()} value="Sair" />
+          </>
+        )}
         <img src={competi} alt="Competi!" />
       </DivRow>
     </ContainerHeader>

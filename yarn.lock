@@ -1102,7 +1102,7 @@
     minimatch "^3.0.4"
     strip-json-comments "^3.1.1"
 
-"@hookform/resolvers@^2.8.8":
+"@hookform/resolvers@^2.8.2":
   version "2.8.8"
   resolved "https://registry.yarnpkg.com/@hookform/resolvers/-/resolvers-2.8.8.tgz#17cf806485435877fdafce9f3bee6ff68f7f87b6"
   integrity sha512-meAEDur1IJBfKyTo9yPYAuzjIfrxA7m9Ov+1nxaW/YupsqMeseWifoUjWK03+hz/RJizsVQAaUjVxFEkyu0GWg==
@@ -2677,11 +2677,6 @@ boolbase@^1.0.0, boolbase@~1.0.0:
   resolved "https://registry.yarnpkg.com/boolbase/-/boolbase-1.0.0.tgz#68dff5fbe60c51eb37725ea9e3ed310dcc1e776e"
   integrity sha1-aN/1++YMUes3cl6p4+0xDcwed24=
 
-bootstrap@4.1.0:
-  version "4.1.0"
-  resolved "https://registry.yarnpkg.com/bootstrap/-/bootstrap-4.1.0.tgz#110b05c31a236d56dbc9adcda6dd16f53738a28a"
-  integrity sha512-kCo82nE8qYVfOa/Z3hL98CPgPIEkh6iPdiJrUJMQ9n9r0+6PEET7cmhLlV0XVYmEj5QtKIOaSGMLxy5jSFhKog==
-
 brace-expansion@^1.1.7:
   version "1.1.11"
   resolved "https://registry.yarnpkg.com/brace-expansion/-/brace-expansion-1.1.11.tgz#3c7fcbf529d87226f3d2f52b966ff5271eb441dd"
@@ -2896,6 +2891,11 @@ cliui@^7.0.2:
     string-width "^4.2.0"
     strip-ansi "^6.0.0"
     wrap-ansi "^7.0.0"
+
+clsx@^1.1.1:
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/clsx/-/clsx-1.1.1.tgz#98b3134f9abbdf23b2663491ace13c5c03a73188"
+  integrity sha512-6/bPho624p3S2pMyvP5kKBPXnI3ufHLObBFCfgx+LkeR5lg2XYy2hqZqUf45ypD8COn2bhgGJSUE+l5dhNBieA==
 
 co@^4.6.0:
   version "4.6.0"
@@ -7091,10 +7091,10 @@ react-error-overlay@^6.0.10:
   resolved "https://registry.yarnpkg.com/react-error-overlay/-/react-error-overlay-6.0.10.tgz#0fe26db4fa85d9dbb8624729580e90e7159a59a6"
   integrity sha512-mKR90fX7Pm5seCOfz8q9F+66VCc1PGsWSBxKbITjfKVQHMNF2zudxHnMdJiB1fRCb+XsbQV9sO9DCkgsMQgBIA==
 
-react-hook-form@^7.25.1:
-  version "7.25.1"
-  resolved "https://registry.yarnpkg.com/react-hook-form/-/react-hook-form-7.25.1.tgz#7ec58505078760134b1c6efdfe07b4b5c4bdb8e3"
-  integrity sha512-AVE/kFtOQ6GEC5TBDNzZrVO8k4QRMi5RNhUWeBq6Koc9V/luBrP1xybWByl4n1yLFL8/2H3p0VM7wp3CW7t8JQ==
+react-hook-form@^7.18:
+  version "7.25.3"
+  resolved "https://registry.yarnpkg.com/react-hook-form/-/react-hook-form-7.25.3.tgz#1475fd52398e905e1f6d88835f96aaa1144635c3"
+  integrity sha512-jL4SByMaC8U3Vhu9s7CwgJBP4M6I3Kpwxib9LrCwWSRPnXDrNQL4uihSTqLLoDICqSUhwwvian9uVYfv+ITtGg==
 
 react-icons@^4.3.1:
   version "4.3.1"
@@ -7199,6 +7199,13 @@ react-scripts@5.0.0:
     workbox-webpack-plugin "^6.4.1"
   optionalDependencies:
     fsevents "^2.3.2"
+
+react-toastify@^8.1.1:
+  version "8.1.1"
+  resolved "https://registry.yarnpkg.com/react-toastify/-/react-toastify-8.1.1.tgz#79fada2487bcd2ca9b5910015f8d6f78cc65c984"
+  integrity sha512-KQa+j+JHjy69xpPYheaWUq3SjVw1sV2D7/QsXW6Tpo2x9HhUCvASezAMYDmLhfAYoSnaXUVnTNFAgZQA75SExQ==
+  dependencies:
+    clsx "^1.1.1"
 
 react@^17.0.2:
   version "17.0.2"

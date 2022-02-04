@@ -8,11 +8,15 @@ import { Pokemon } from "../../providers/pokemon/pokemon.model";
 
 import { ContainerBody, Page, P } from "./style";
 
-function ContainerMain({ pokemons, itemsForPage = 6 }: ContainerMainData) {
+function ContainerMain({
+  pokemons,
+  itemsForPage = 6,
+  callbackAdd,
+}: ContainerMainData) {
   const [currentPokemons, setCurrentPokemons] = useState<Pokemon[]>([]);
   const itensPerPage = itemsForPage;
   const [currentPage, setCurrentPage] = useState(0);
-  const [currentSubPage, setCurrenSubtPage] = useState<number>(0);
+  const [currentSubPage, setCurrenSubPage] = useState<number>(0);
   const totalPages = Math.ceil(pokemons.length / itensPerPage);
 
   const startindex = currentPage * itensPerPage;
@@ -47,11 +51,12 @@ function ContainerMain({ pokemons, itemsForPage = 6 }: ContainerMainData) {
         {currentPokemons[0] &&
           currentPokemons.map((element: Pokemon, index: number) => (
             <CardPokemon
+              callbackAdd={callbackAdd}
               key={element.name}
               name={element.name}
-              type={element.types}
+              types={element.types}
               alt={element.name}
-              number={element.id}
+              id={element.id}
               image={element.image}
               abilities={element.abilities}
               stats={element.stats}
@@ -63,7 +68,7 @@ function ContainerMain({ pokemons, itemsForPage = 6 }: ContainerMainData) {
           arrPages={arrPages}
           currentPage={currentPage}
           numberPagination={2}
-          setCurrenSubtPage={setCurrenSubtPage}
+          setCurrentSubPage={setCurrenSubPage}
           setCurrentPage={setCurrentPage}
           totalPages={totalPages}
         />
