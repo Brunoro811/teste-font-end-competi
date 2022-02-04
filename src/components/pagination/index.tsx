@@ -1,5 +1,5 @@
 import ButtonPage from "../buttonPage";
-import { ContainerPagination } from "../ContainerMain/style";
+import { ContainerPagination } from "../containerMain/style";
 
 import next from "../../assets/svg/next.svg";
 import previous from "../../assets/svg/previous.svg";
