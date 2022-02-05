@@ -3,8 +3,8 @@ import { SpanTypePokemonProps } from "./cardPokemon.model";
 
 export const Container = styled.div`
     width: 100%;
-    max-width: 250px;
-    height: 250px;
+    max-width: 245px;
+    height: 245px;
     position: relative;
     display: flex;
     justify-content: center;

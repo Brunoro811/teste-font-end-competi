@@ -2,9 +2,9 @@ import styled from "styled-components";
 import { ButtonCircleProps } from ".";
 
 export const Button = styled.button<ButtonCircleProps>`
-    width: 45px;
+    min-width: 27px;
     margin: 5px;
-    height: 45px;
+    min-height: 27px;
     border: none;
     border-radius: 100%;
     cursor: pointer;
@@ -12,10 +12,14 @@ export const Button = styled.button<ButtonCircleProps>`
     justify-content: center;
     align-items: center;
     background-color : ${props=> props.color || "#49DBDF"};
-
+    
+    border: 2px solid #000;
     :hover{
-        border: 2px solid #000;
-    }
-    
-    
+    }   
+`
+export const Image = styled.img`
+   width: 45px;
+   height: 45px;
+   padding: 10px;
+   box-sizing: border-box;
 `

@@ -6,14 +6,11 @@ export const Container = styled.main`
     margin: 0 auto;
     border-radius: 5px;
     background-color: #D4C3A3;
-    box-shadow: 0px 0px 9px 0px #000000;
 `
 
 export const ContainerBody = styled.div`
-
-    padding-top: 50px ;
     width: 100%;
-    max-width: 750px;
+    max-width: 900px;
     margin: 0 auto;
     display: flex;
     flex-direction: column;
@@ -21,7 +18,8 @@ export const ContainerBody = styled.div`
     flex-wrap: wrap;
     @media(min-width: 600px){
         flex-direction: row;
-        justify-content: center;
+        justify-content: space-around;
+        margin-top: 50px;
     }
 `
 export const ContainerPagination = styled.div`

@@ -1,4 +1,5 @@
-import { useEffect, useRef, useState } from "react";
+import { MouseEventHandler, useEffect, useRef, useState } from "react";
+import "./active.css";
 
 import { Pokemon } from "../../providers/pokemon/pokemon.model";
 import { useUser } from "../../providers/user";
@@ -19,12 +20,14 @@ import {
   CaroselContainer,
   ContainerCenter,
   ContainerMax,
+  DivCenter,
   HeaderFiltro,
   Label,
   Select,
   SpanAside,
 } from "./style";
 import ButtonCircle from "../../components/buttonCircle";
+import ButtonPage from "../../components/buttonPage";
 export interface UserData {
   name: string;
   password: string;
@@ -33,14 +36,19 @@ export interface UserData {
 
 function Home() {
   const [search, setSearch] = useState<string>("");
-  const { pokemons, setPokemons } = usePokemon();
+  const { pokemons } = usePokemon();
   const [achados, setAchados] = useState<Pokemon[]>([]);
+  const widthTotal = 1200;
 
   const { isInformation, setIsInformation, handleAddPokemon } = useUser();
   const handleInformation = () => setIsInformation(!isInformation);
   const [backupPokemon, setBackupPokemon] = useState(pokemons);
 
   const carrosel = useRef<HTMLInputElement>({} as HTMLInputElement);
+  const [carroselPage, setCarroselPage] = useState(1);
+  const [eventLast, setEventLast] = useState<React.ChangeEvent<Element>>(
+    {} as React.ChangeEvent<Element>
+  );
 
   const handleSearchPokemonForName = () => {
     setAchados(
@@ -73,6 +81,15 @@ function Home() {
   };
   const handleCarroselleft = (e: EventTarget) => {
     carrosel.current.scrollLeft -= carrosel.current.offsetWidth;
+  };
+  const handleMoveButton = (e: React.ChangeEvent<Element>, code: number) => {
+    /*if (eventLast.target) {
+      eventLast.target.classList.remove("active");
+    }
+    e.target.classList.add("active");
+    setEventLast(e);*/
+    setCarroselPage(code + 1);
+    carrosel.current.scrollLeft = widthTotal * code;
   };
 
   return (
@@ -140,6 +157,7 @@ function Home() {
                 <ItemCarrosel />
                 <ItemCarrosel />
                 <ItemCarrosel />
+                <ItemCarrosel />
               </CaroselContainer>
             </ContainerMax>
             <SpanAside>
@@ -151,6 +169,32 @@ function Home() {
               />
             </SpanAside>
           </ContainerCenter>
+          <DivCenter>
+            <ButtonPage
+              onClick={(e) => handleMoveButton(e, 0)}
+              circle
+              spanHidden
+              children={1}
+              backgroundColor="#7E7394"
+              numberPage={carroselPage}
+            />
+            <ButtonPage
+              onClick={(e) => handleMoveButton(e, 1)}
+              circle
+              spanHidden
+              children={2}
+              backgroundColor="#7E7394"
+              numberPage={carroselPage}
+            />
+            <ButtonPage
+              onClick={(e) => handleMoveButton(e, 2)}
+              circle
+              spanHidden
+              children={3}
+              backgroundColor="#7E7394"
+              numberPage={carroselPage}
+            />
+          </DivCenter>
         </Container>
       )}
 

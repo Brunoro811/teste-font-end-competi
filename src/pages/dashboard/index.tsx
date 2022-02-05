@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import ButtonAction from "../../components/buttonAction";
 import Container from "../../components/container";
 import ContainerCard from "../../components/containerCard";
+import Footer from "../../components/footer";
 import Header from "../../components/header";
 import PokedexCard from "../../components/pokedexCard";
 import { useUser } from "../../providers/user";
@@ -49,6 +50,7 @@ function Dashboard() {
           </Main>
         </ContainerCard>
       </Container>
+      <Footer />
     </>
   );
 }
