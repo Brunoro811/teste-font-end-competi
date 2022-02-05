@@ -41,5 +41,14 @@ export const CaroselContainer = styled.div`
 
 `
 export const SpanAside = styled.span`
-
+`
+export const DivCenter = styled.div`
+    width: 100%;
+    max-width: 1310px;
+    display: none;
+    margin: 0 auto;
+    justify-content: center;
+    @media(min-width:1200px){
+        display: flex;
+    }
 `

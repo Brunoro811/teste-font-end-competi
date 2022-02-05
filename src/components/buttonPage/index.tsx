@@ -7,7 +7,6 @@ interface ButtonPageData {
   onClick?: (e: React.ChangeEvent<HTMLInputElement | any>) => void;
   value?: number;
   backgroundColor?: string;
-  currentPage?: number;
   numberPage?: number;
 }
 export interface ButtonPageProps {
@@ -18,7 +17,6 @@ function ButtonPage({
   isImage = false,
   image = "",
   backgroundColor,
-  currentPage = 0,
   numberPage,
   ...rest
 }: ButtonPageData) {

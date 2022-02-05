@@ -5,7 +5,6 @@ import next from "../../assets/svg/next.svg";
 import previous from "../../assets/svg/previous.svg";
 
 import { PaginationProps } from "./pagination.model";
-import { useEffect, useRef } from "react";
 
 function Pagination({
   arrPages = [1, 2, 3, 4, 5, 6],
@@ -31,16 +30,8 @@ function Pagination({
     return newArray;
   };
 
-  const click = useRef<HTMLDivElement>(null);
-  const handleActivatePage = () => {
-    console.log("Lista de filhos ", click.current?.childNodes);
-    console.log("Values ", click.current?.childNodes);
-  };
-
-  useEffect(() => {}, []);
-
   return (
-    <ContainerPagination ref={click} onClick={handleActivatePage}>
+    <ContainerPagination>
       {walkArray(arrPages, currentPage, currentPage + numberPagination)[0] >
         0 && (
         <ButtonPage
