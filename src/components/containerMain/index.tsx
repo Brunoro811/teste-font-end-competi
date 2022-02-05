@@ -65,6 +65,7 @@ function ContainerMain({
       </ContainerBody>
       {currentPokemons[0] && (
         <Pagination
+          numberPage={numberPage}
           arrPages={arrPages}
           currentPage={currentPage}
           numberPagination={2}
