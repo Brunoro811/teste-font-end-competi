@@ -7,8 +7,12 @@ export const Button = styled.button<ButtonPageProps>`
     border-radius: 5px;
     width: 40px;
     height: 40px;
+    ${(props)=> props.circle? "width: 21px;height: 22px;border-radius:100%;" : ""}
     background-color: ${(props)=> props.backgroundColor || "#7E7394"};
     color: #ffffff;
     border: 2px solid #100B16 ;
     cursor: pointer;
+`
+export const Span = styled.span<ButtonPageProps>`
+    display: ${(props)=> props.spanHidden ? 'none' : 'inline'};
 `

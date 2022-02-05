@@ -1,4 +1,4 @@
-import { Button } from "./style";
+import { Button, Span } from "./style";
 
 interface ButtonPageData {
   children?: number;
@@ -8,9 +8,13 @@ interface ButtonPageData {
   value?: number;
   backgroundColor?: string;
   numberPage?: number;
+  spanHidden?: boolean;
+  circle?: boolean;
 }
 export interface ButtonPageProps {
   backgroundColor?: string;
+  spanHidden?: boolean;
+  circle?: boolean;
 }
 function ButtonPage({
   children,
@@ -18,18 +22,22 @@ function ButtonPage({
   image = "",
   backgroundColor,
   numberPage,
+  spanHidden = false,
+  circle = false,
   ...rest
 }: ButtonPageData) {
   return (
     <>
       {numberPage && (
         <Button
+          circle={circle}
           backgroundColor={
             numberPage === children ? "#535662" : backgroundColor
           }
           {...rest}
         >
-          {children && children}
+          {!spanHidden && children}
+          {spanHidden && <Span spanHidden={spanHidden}>{children}</Span>}
           {isImage && <img src={image} alt={image} />}
         </Button>
       )}
