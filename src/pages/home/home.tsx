@@ -46,9 +46,6 @@ function Home() {
 
   const carrosel = useRef<HTMLInputElement>({} as HTMLInputElement);
   const [carroselPage, setCarroselPage] = useState(1);
-  const [eventLast, setEventLast] = useState<React.ChangeEvent<Element>>(
-    {} as React.ChangeEvent<Element>
-  );
 
   const handleSearchPokemonForName = () => {
     setAchados(
@@ -83,11 +80,6 @@ function Home() {
     carrosel.current.scrollLeft -= carrosel.current.offsetWidth;
   };
   const handleMoveButton = (e: React.ChangeEvent<Element>, code: number) => {
-    /*if (eventLast.target) {
-      eventLast.target.classList.remove("active");
-    }
-    e.target.classList.add("active");
-    setEventLast(e);*/
     setCarroselPage(code + 1);
     carrosel.current.scrollLeft = widthTotal * code;
   };
