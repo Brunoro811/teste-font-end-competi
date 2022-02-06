@@ -1,3 +1,4 @@
+import { Link as LinkRouterDom } from "react-router-dom";
 import styled from "styled-components";
 
 export const ContainerLogin = styled.div`
@@ -33,7 +34,8 @@ export const Information = styled.div`
     width: 100%;
     max-width: 300px;
     padding: 7px 0px;
-    height: 40px;
+    height: 60px;
+    line-height: 35px;
     text-align: center;
 `
 export const Warning = styled.p`
@@ -46,4 +48,13 @@ export const Img = styled.img`
     width: 100%;
     max-width: 300px;
     margin:0 auto;
+`
+export const Link = styled(LinkRouterDom)`
+    text-decoration: none;
+    color: var(--color-link);
+    font-weight: 500;
+    font-family: "Poppins";
+    :hover{
+        text-decoration: underline;
+    }
 `

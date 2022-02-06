@@ -14,6 +14,7 @@ const GlobalStyle = createGlobalStyle`
         --white-100: #ffffff;
         --font-primary : #535662;
         --color-error: #e2010a;
+        --color-link: #524153 ;
         --title-primary: #535662;
         --background-remove: #F25D52;
         

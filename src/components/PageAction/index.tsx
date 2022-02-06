@@ -5,7 +5,6 @@ import { UserRegisterLoginData } from "../../providers/user/user.model";
 import { useUser } from "../../providers/user";
 
 import { useEffect } from "react";
-import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 
@@ -17,6 +16,7 @@ import {
   Information,
   Warning,
   Img,
+  Link,
 } from "./style";
 import LogoPokemon from "../../assets/svg/logoPokemon.svg";
 
