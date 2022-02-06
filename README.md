@@ -17,6 +17,9 @@ O Objetivo da aplicação é o usuário conhecer mais os pokemons, nela você po
 - React
 - Deploy cervel
 
+#Bibliotecas Ultilizadas
+- Jest Test Libary
+
 # Consumo da Api Pokemon
 https://pokeapi.co/
 
@@ -42,4 +45,5 @@ cd test-font-end-competi
  Bruno Ferreira de OLiveira
  
  https://www.linkedin.com/in/brferreiraoliveira/
+ 
  Ferreira.bruno.oliveira@gmail.com
