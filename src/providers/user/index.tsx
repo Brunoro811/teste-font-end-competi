@@ -20,8 +20,8 @@ const UserContext = createContext<UserContextData>({} as UserContextData);
 export const UserProvider = ({ children }: UserProviderData) => {
   const history = useHistory();
 
-  const dbUsers: UserData[] = JSON.parse(
-    localStorage.getItem(POKEMONS_USERS) || "[]"
+  const [dbUsers, setDbUsers] = useState<UserData[]>(
+    JSON.parse(localStorage.getItem(POKEMONS_USERS) || "[]")
   );
   const [userLogged, setUserLogged] = useState<UserData>(
     JSON.parse(localStorage.getItem(POKEMONS_USER_LOGGED) || "{}")
@@ -115,8 +115,21 @@ export const UserProvider = ({ children }: UserProviderData) => {
       JSON.stringify({ name: name, password: password, pokedex: pokedex })
     );
     setUserLogged({ name: name, password: password, pokedex: pokedex });
+    const newDbusers = dbUsers.map((element: UserData, index) => {
+      if (element.name === name) {
+        let newUser = { ...element };
+        newUser.pokedex = pokedex;
+        return newUser;
+      }
+      return element;
+    });
+    setDbUsers(newDbusers);
+    localStorage.setItem(POKEMONS_USERS, JSON.stringify(newDbusers));
+
     toast.success("Você soltou o pokemon na natureza!");
   };
+
+  useEffect(() => {}, []);
 
   return (
     <UserContext.Provider

@@ -40,6 +40,16 @@ export const Page = styled.p`
     max-width: 750px;
     padding: 10px;
 `
+
+export const PageInfo = styled.p`
+    text-align: end;
+    margin: 0 auto;
+    width: 100%;
+    max-width: 750px;
+    padding: 10px;
+    background-color: var(--electric);
+`
+
 export const P = styled.p`
     width: 100%;
     padding: 20px;

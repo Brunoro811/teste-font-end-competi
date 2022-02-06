@@ -8,6 +8,10 @@ export interface PokemonContextData{
     allNamesPokemon: NamesPokemon
     setPokemons: React.Dispatch<React.SetStateAction<Pokemon[]>>
     pokemonsCarrosel: Pokemon[]
+    isLoad: boolean
+    isLoadFinaly: boolean
+    totalPokemons: number
+    initialPokemons: number
 }
 export interface Pokemon{
     name: string

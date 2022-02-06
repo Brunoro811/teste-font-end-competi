@@ -6,7 +6,8 @@ import Pagination from "../pagination";
 import { ContainerMainData } from "./containerMain.model";
 import { Pokemon } from "../../providers/pokemon/pokemon.model";
 
-import { ContainerBody, Page, P } from "./style";
+import { ContainerBody, Page, P, PageInfo } from "./style";
+import { usePokemon } from "../../providers/pokemon";
 
 function ContainerMain({
   pokemons,
@@ -25,6 +26,8 @@ function ContainerMain({
   const endIndexSubPage = startindexSubPage + itensPerPage;
 
   const [numberPage, setNumberPage] = useState(1);
+
+  const { totalPokemons, isLoadFinaly } = usePokemon();
 
   useEffect(() => {
     if (!currentPokemons) {
@@ -47,6 +50,12 @@ function ContainerMain({
     <>
       <Page>Pagina: {numberPage + 1}</Page>
       <Page>Total de Páginas: {totalPages + 1}</Page>
+      {isLoadFinaly && (
+        <PageInfo>
+          Carregando restantes das páginas total{" "}
+          {Math.ceil(totalPokemons / 6) + 1}
+        </PageInfo>
+      )}
       <ContainerBody>
         {currentPokemons[0] &&
           currentPokemons.map((element: Pokemon, index: number) => (
