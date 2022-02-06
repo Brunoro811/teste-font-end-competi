@@ -37,7 +37,7 @@ export interface UserData {
 
 function Home() {
   const [search, setSearch] = useState<string>("");
-  const { pokemons, pokemonsCarrosel, isLoad, initialPokemons } = usePokemon();
+  const { pokemons, pokemonsCarrosel, isLoad } = usePokemon();
   const [achados, setAchados] = useState<Pokemon[]>([]);
   const widthTotal = 1200;
 
