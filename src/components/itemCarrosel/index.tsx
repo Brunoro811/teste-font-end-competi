@@ -8,20 +8,26 @@ import {
   DivRotate,
   SpanNumber,
 } from "./style";
-function ItemCarrosel() {
+
+interface ItemCarroselData {
+  id: number;
+  image: string;
+  alt: string;
+  name: string;
+  types: string;
+}
+
+function ItemCarrosel({ id, image, types, name, alt }: ItemCarroselData) {
   return (
     <Item>
-      <Img
-        src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png"
-        alt="POkemon"
-      />
+      <Img src={image} alt={alt} />
       <Info>
         <DivRotate></DivRotate>
-        <SpanNumber>25</SpanNumber>
+        <SpanNumber>{id}</SpanNumber>
         <SpanName>
-          <p>Bulbasairo </p>
+          <p>{name}</p>
         </SpanName>
-        <SpanType>Electric</SpanType>
+        <SpanType>{types}</SpanType>
       </Info>
     </Item>
   );

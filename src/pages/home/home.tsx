@@ -1,4 +1,4 @@
-import { MouseEventHandler, useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import "./active.css";
 
 import { Pokemon } from "../../providers/pokemon/pokemon.model";
@@ -36,7 +36,7 @@ export interface UserData {
 
 function Home() {
   const [search, setSearch] = useState<string>("");
-  const { pokemons } = usePokemon();
+  const { pokemons, pokemonsCarrosel } = usePokemon();
   const [achados, setAchados] = useState<Pokemon[]>([]);
   const widthTotal = 1200;
 
@@ -72,6 +72,11 @@ function Home() {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [search]);
+  useEffect(() => {
+    if (pokemons) {
+      setBackupPokemon(pokemons);
+    }
+  }, [pokemons]);
 
   const handleCarroselRight = (e: EventTarget) => {
     carrosel.current.scrollLeft += carrosel.current.offsetWidth + 10;
@@ -134,23 +139,21 @@ function Home() {
               />
             </SpanAside>
             <ContainerMax>
-              <CaroselContainer ref={carrosel}>
-                <ItemCarrosel />
-                <ItemCarrosel />
-                <ItemCarrosel />
-                <ItemCarrosel />
-                <ItemCarrosel />
-                <ItemCarrosel />
-                <ItemCarrosel />
-                <ItemCarrosel />
-                <ItemCarrosel />
-                <ItemCarrosel />
-                <ItemCarrosel />
-                <ItemCarrosel />
-                <ItemCarrosel />
-                <ItemCarrosel />
-                <ItemCarrosel />
-              </CaroselContainer>
+              {console.log("carroselPokemon", pokemonsCarrosel)}
+              {pokemonsCarrosel[0] && (
+                <CaroselContainer ref={carrosel}>
+                  {pokemonsCarrosel.map((element: Pokemon) => (
+                    <ItemCarrosel
+                      id={element.id}
+                      name={element.name}
+                      alt={element.name}
+                      image={element.image}
+                      types={element.types}
+                      key={element.name}
+                    />
+                  ))}
+                </CaroselContainer>
+              )}
             </ContainerMax>
             <SpanAside>
               <ButtonCircle

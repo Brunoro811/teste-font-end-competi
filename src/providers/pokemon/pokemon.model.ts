@@ -7,6 +7,7 @@ export interface PokemonContextData{
     pokemons: Pokemon[]
     allNamesPokemon: NamesPokemon
     setPokemons: React.Dispatch<React.SetStateAction<Pokemon[]>>
+    pokemonsCarrosel: Pokemon[]
 }
 export interface Pokemon{
     name: string
