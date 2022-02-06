@@ -91,12 +91,13 @@ export const UserProvider = ({ children }: UserProviderData) => {
       } else if (!pokemonExist[0]) {
         user.pokedex.push(pokemon);
         localStorage.setItem(POKEMONS_USER_LOGGED, JSON.stringify(user));
-        dbUsers.map((element) => {
+        dbUsers.map(function test(element) {
           if (element.name === user.name) {
             element.pokedex.push(pokemon);
             localStorage.setItem(POKEMONS_USERS, JSON.stringify(dbUsers));
             setUserLogged(user);
           }
+          return element;
         });
         toast.success("Parabéns você capturou um pokemon!");
       }
