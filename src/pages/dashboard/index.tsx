@@ -9,7 +9,7 @@ import PokedexCard from "../../components/pokedexCard";
 import { Pokemon } from "../../providers/pokemon/pokemon.model";
 import { useUser } from "../../providers/user";
 
-import { Title, Row, Main, Col, RowTile } from "./style";
+import { Title, Row, Main, Col, RowTile, P } from "./style";
 
 function Dashboard() {
   const { userLogged } = useUser();
@@ -53,27 +53,32 @@ function Dashboard() {
             </Link>
           </RowTile>
           <Main>
-            <Row>
-              <Col>Foto</Col>
-              <Col>Nome</Col>
-              <Col>Tipo</Col>
-              <Col>Ação</Col>
-            </Row>
-            {myPokemons &&
-              myPokemons.map((element: any) => {
-                return (
-                  <PokedexCard
-                    key={element.name}
-                    id={element.id}
-                    name={element.name}
-                    image={element.image}
-                    types={element.types}
-                    abilities={element.abilities}
-                    stats={element.stats}
-                  />
-                );
-              })}
+            {myPokemons[0] && (
+              <>
+                <Row>
+                  <Col>Foto</Col>
+                  <Col>Nome</Col>
+                  <Col>Tipo</Col>
+                  <Col>Ação</Col>
+                </Row>
+
+                {myPokemons.map((element: any) => {
+                  return (
+                    <PokedexCard
+                      key={element.name}
+                      id={element.id}
+                      name={element.name}
+                      image={element.image}
+                      types={element.types}
+                      abilities={element.abilities}
+                      stats={element.stats}
+                    />
+                  );
+                })}
+              </>
+            )}
           </Main>
+          {!myPokemons[0] && <P>Você está sem pokemons, vá procura-los!</P>}
         </ContainerCard>
       </Container>
       <Footer />

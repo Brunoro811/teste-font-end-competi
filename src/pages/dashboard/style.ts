@@ -46,3 +46,7 @@ export const Col = styled.p`
        
     }
 `
+export const P = styled.p`
+    text-align: center;
+    color: var(--title-primary);
+`

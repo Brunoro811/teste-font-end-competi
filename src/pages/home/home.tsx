@@ -28,6 +28,7 @@ import {
 } from "./style";
 import ButtonCircle from "../../components/buttonCircle";
 import ButtonPage from "../../components/buttonPage";
+import CardCharger from "../../components/cardCharger";
 export interface UserData {
   name: string;
   password: string;
@@ -36,7 +37,7 @@ export interface UserData {
 
 function Home() {
   const [search, setSearch] = useState<string>("");
-  const { pokemons, pokemonsCarrosel } = usePokemon();
+  const { pokemons, pokemonsCarrosel, isLoad, initialPokemons } = usePokemon();
   const [achados, setAchados] = useState<Pokemon[]>([]);
   const widthTotal = 1200;
 
@@ -129,70 +130,71 @@ function Home() {
             />
           </ContainerCard>
 
-          <ContainerCenter>
-            <SpanAside>
-              <ButtonCircle
-                color="var(--background-strong )"
-                image={Left}
-                callback={handleCarroselleft}
-                alt="left"
-              />
-            </SpanAside>
-            <ContainerMax>
-              {console.log("carroselPokemon", pokemonsCarrosel)}
-              {pokemonsCarrosel[0] && (
-                <CaroselContainer ref={carrosel}>
-                  {pokemonsCarrosel.map((element: Pokemon) => (
-                    <ItemCarrosel
-                      id={element.id}
-                      name={element.name}
-                      alt={element.name}
-                      image={element.image}
-                      types={element.types}
-                      key={element.name}
-                    />
-                  ))}
-                </CaroselContainer>
-              )}
-            </ContainerMax>
-            <SpanAside>
-              <ButtonCircle
-                color="var(--background-strong )"
-                image={Right}
-                callback={handleCarroselRight}
-                alt="right"
-              />
-            </SpanAside>
-          </ContainerCenter>
-          <DivCenter>
-            <ButtonPage
-              onClick={(e) => handleMoveButton(e, 0)}
-              circle
-              spanHidden
-              children={1}
-              backgroundColor="var(--background-primary)"
-              numberPage={carroselPage}
-            />
-            <ButtonPage
-              onClick={(e) => handleMoveButton(e, 1)}
-              circle
-              spanHidden
-              children={2}
-              backgroundColor="var(--background-primary)"
-              numberPage={carroselPage}
-            />
-            <ButtonPage
-              onClick={(e) => handleMoveButton(e, 2)}
-              circle
-              spanHidden
-              children={3}
-              backgroundColor="var(--background-primary)"
-              numberPage={carroselPage}
-            />
-          </DivCenter>
+          {pokemonsCarrosel[0] && (
+            <>
+              <ContainerCenter>
+                <SpanAside>
+                  <ButtonCircle
+                    color="var(--background-strong )"
+                    image={Left}
+                    callback={handleCarroselleft}
+                    alt="left"
+                  />
+                </SpanAside>
+                <ContainerMax>
+                  <CaroselContainer ref={carrosel}>
+                    {pokemonsCarrosel.map((element: Pokemon) => (
+                      <ItemCarrosel
+                        id={element.id}
+                        name={element.name}
+                        alt={element.name}
+                        image={element.image}
+                        types={element.types}
+                        key={element.name}
+                      />
+                    ))}
+                  </CaroselContainer>
+                </ContainerMax>
+                <SpanAside>
+                  <ButtonCircle
+                    color="var(--background-strong )"
+                    image={Right}
+                    callback={handleCarroselRight}
+                    alt="right"
+                  />
+                </SpanAside>
+              </ContainerCenter>
+              <DivCenter>
+                <ButtonPage
+                  onClick={(e) => handleMoveButton(e, 0)}
+                  circle
+                  spanHidden
+                  children={1}
+                  backgroundColor="var(--background-primary)"
+                  numberPage={carroselPage}
+                />
+                <ButtonPage
+                  onClick={(e) => handleMoveButton(e, 1)}
+                  circle
+                  spanHidden
+                  children={2}
+                  backgroundColor="var(--background-primary)"
+                  numberPage={carroselPage}
+                />
+                <ButtonPage
+                  onClick={(e) => handleMoveButton(e, 2)}
+                  circle
+                  spanHidden
+                  children={3}
+                  backgroundColor="var(--background-primary)"
+                  numberPage={carroselPage}
+                />
+              </DivCenter>
+            </>
+          )}
         </Container>
       )}
-
+      {isLoad && <CardCharger />}
       <Footer />
       {isInformation && (
         <InformationModal handleIsInformation={handleInformation} />
