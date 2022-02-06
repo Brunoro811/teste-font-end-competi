@@ -32,7 +32,9 @@ function ButtonPage({
         <Button
           circle={circle}
           backgroundColor={
-            numberPage === children ? "#535662" : backgroundColor
+            numberPage === children
+              ? "var(--background-active)"
+              : backgroundColor
           }
           {...rest}
         >

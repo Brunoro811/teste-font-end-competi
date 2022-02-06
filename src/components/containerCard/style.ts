@@ -6,6 +6,7 @@ export const Container = styled.main`
     max-width: 1140px;
     margin: 0 auto;
     border-radius: 0px 0px 20px 20px;
-    background-color: #D4C3A3;
-  filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
+    background-color: var(--background-container);
+    -webkit-box-shadow: 0px 6px 10px 0px rgba(0,0,0,0.11); 
+    box-shadow: 0px 6px 10px 0px rgba(0,0,0,0.11);
 `

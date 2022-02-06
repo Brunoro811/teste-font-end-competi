@@ -4,7 +4,7 @@ export const HeaderFiltro = styled.div`
     width: 100%;
     height: 109px;
     padding: 40px;
-    border-bottom: 1px solid #707070;
+    border-bottom: 1px solid var(--color-border-light);
     display: flex;
     align-items: center;
 
@@ -15,9 +15,11 @@ export const Select = styled.select`
     padding: 10px;
     outline: none;
     border-radius: 5px;
-    background-color: #ffffff;
+    background-color: var(--background-white-100);
+    font-family: 'Open Sans', 'Helvetica Neue', sans-serif;
 `
 export const Label = styled.label`
+ font-family: 'Open Sans', 'Helvetica Neue', sans-serif;
     font-size: 12px;
     display: flex;
     flex-direction: column;

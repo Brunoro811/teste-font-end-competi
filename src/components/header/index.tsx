@@ -24,7 +24,7 @@ function Header({ value, onChange, handleSearchPokemonForName }: HeaderProps) {
       <InputSearch
         value={value}
         onChange={onChange}
-        placeholder="Search Pokémon for name"
+        placeholder="Search Pokémon"
         functionSearch={handleSearchPokemonForName}
       />
       <DivRow>

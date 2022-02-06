@@ -35,11 +35,13 @@ function PokedexCard({ id, name, image, types, abilities, stats }: Pokemon) {
             alt={"View"}
             image={View}
             callback={handleViewDetails}
+            borderNone
           />
           <ButtonCircle
-            color="#F25D52"
+            color="var(--background-remove)"
             alt={"Remove"}
             image={Remove}
+            borderNone
             callback={() =>
               handleRemovePokemon({ id, name, image, types, abilities, stats })
             }

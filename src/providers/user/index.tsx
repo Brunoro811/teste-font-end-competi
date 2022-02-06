@@ -115,7 +115,7 @@ export const UserProvider = ({ children }: UserProviderData) => {
       JSON.stringify({ name: name, password: password, pokedex: pokedex })
     );
     setUserLogged({ name: name, password: password, pokedex: pokedex });
-    toast.success("Você removeu um pokemon!");
+    toast.success("Você soltou o pokemon na natureza!");
   };
 
   return (

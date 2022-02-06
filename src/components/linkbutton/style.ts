@@ -7,8 +7,9 @@ export const Link = styled(LinkDom)`
     padding:5px ;
     border: none;
     border-radius: 5px;
-    background-color: #7E7394;
-    color: #ffffff;
+    background-color: var(--background-primary );
+    font-family: 'Open Sans', 'Helvetica Neue', sans-serif;
+    color: var(--white-100);
     text-decoration: none;
     display: flex;
     justify-content: center;

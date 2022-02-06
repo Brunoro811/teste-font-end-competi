@@ -1,7 +1,11 @@
 import ButtonAction from "../buttonAction";
 import Container from "../container";
 import Input from "../input";
+import { UserRegisterLoginData } from "../../providers/user/user.model";
+import { useUser } from "../../providers/user";
 
+import { useEffect } from "react";
+import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 
@@ -12,11 +16,10 @@ import {
   RowCenter,
   Information,
   Warning,
+  Img,
 } from "./style";
-import { Link } from "react-router-dom";
-import { useUser } from "../../providers/user";
-import { useEffect } from "react";
-import { UserRegisterLoginData } from "../../providers/user/user.model";
+import LogoPokemon from "../../assets/svg/logoPokemon.svg";
+
 interface PageActionData {
   callbackSubmit: any | ((user: UserRegisterLoginData) => void);
   valueButton: string;
@@ -53,6 +56,7 @@ function PageAction({
 
   return (
     <Container verticalCenter height={100}>
+      <Img src={LogoPokemon} alt="Logo Pokemon!" />
       <Information>{warning && <Warning>{warning}</Warning>}</Information>
       <ContainerLogin>
         <Title>{title}</Title>

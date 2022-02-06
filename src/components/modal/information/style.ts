@@ -28,7 +28,7 @@ export const Card = styled.div`
     max-width: 300px;
     height: 150px;
     padding: 20px;
-    background-color: #ffffff;
+    background-color: var(--white-100);
     border-radius: 5px;
     border: 2px solid;
     position: relative;

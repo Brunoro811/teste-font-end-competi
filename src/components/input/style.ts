@@ -13,11 +13,8 @@ export const InputGenerics = styled.input`
 export const Errors = styled.p`
     max-width: 250px;
     height: 25px;
-    padding: 3px;
-    margin-top: 5px;
     border-radius: 5px;
-    //background-color: rgba(96,31,31,0.5);
-    color: #e2010a;
+    color: var(--color-error);
     font-style: italic;
 `
 export const SpanError = styled.div`

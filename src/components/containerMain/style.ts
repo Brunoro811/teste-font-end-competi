@@ -5,7 +5,7 @@ export const Container = styled.main`
     max-width: 1140px;
     margin: 0 auto;
     border-radius: 5px;
-    background-color: #D4C3A3;
+    background-color: var(--background-container);
 `
 
 export const ContainerBody = styled.div`

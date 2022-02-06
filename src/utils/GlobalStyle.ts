@@ -3,13 +3,29 @@ import { createGlobalStyle } from "styled-components";
 const GlobalStyle = createGlobalStyle`
     :root{
         --background-strong : #524153;
-        --background-primary : #7E7394;
-        --background-secoundary : #E0D7EC;
+        --background-body : #E0D7EC;
         --background-container : #D4C3A3;
+        --background-primary : #7E7394;
 
-        --black-300: #535662;
+        --background-view: #49DBDF;
+        --background-active: #535662;
+        --background-card-details: #B4ADBE;
+        --background-white-100: #ffffff;
+        --white-100: #ffffff;
         --font-primary : #535662;
-        --font-secondary: #ffffff;
+        --color-error: #e2010a;
+        --title-primary: #535662;
+        --background-remove: #F25D52;
+        
+        --color-border: #100B16;
+        --color-border-light: #707070;
+
+        --grass: #079e45;
+        --electric: #F6BD20;
+        --fire : #F25D52;
+        --water: #118ec2;
+        --outhers : #020202;
+
     }
 
     h1,h2,h3,h4,h5,h6,div,main,footer,section,header,button,form,a,span,p{
@@ -19,10 +35,7 @@ const GlobalStyle = createGlobalStyle`
     }
     body {
         margin: 0;
-        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-            'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',sans-serif;
-        -webkit-font-smoothing: antialiased;
-        -moz-osx-font-smoothing: grayscale;
+        font-family:'Open Sans', 'Helvetica Neue', sans-serif
 }
 
 code {

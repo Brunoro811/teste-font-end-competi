@@ -8,9 +8,9 @@ export const Button = styled.button<ButtonPageProps>`
     width: 40px;
     height: 40px;
     ${(props)=> props.circle? "width: 21px;height: 22px;border-radius:100%;" : ""}
-    background-color: ${(props)=> props.backgroundColor || "#7E7394"};
-    color: #ffffff;
-    border: 2px solid #100B16 ;
+    background-color: ${(props)=> props.backgroundColor || "var(--background-primary)"};
+    color: var(--white-100);
+    border: 2px solid #000000;
     cursor: pointer;
 `
 export const Span = styled.span<ButtonPageProps>`

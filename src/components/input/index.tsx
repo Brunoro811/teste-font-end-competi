@@ -21,6 +21,7 @@ function Input({
     <>
       <SpanError>{erros && <Errors>{erros.message}</Errors>}</SpanError>
       <InputGenerics
+        data-testid="input"
         placeholder={placeholder}
         type={type}
         {...register(registerValue)}

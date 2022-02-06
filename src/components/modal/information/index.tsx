@@ -21,7 +21,7 @@ function InformationModal({ handleIsInformation }: InformationModalData) {
         <Card>
           <SpanDisplacement>
             <ButtonCircle
-              color="#535662"
+              color="var(--background-active)"
               alt="Close information"
               image={Close}
               callback={handleIsInformation}
