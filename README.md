@@ -4,9 +4,9 @@
 
 [![NPM](https://img.shields.io/npm/l/react)](https://github.com/Brunoro811/teste-font-end-competi/blob/main/LICENSE)
 # Sobre o Projeto
-#link
+https://teste-font-end-competi-brunoro811.vercel.app/
 
- **Pokemon** é uma aplicação conttruida durante um processo seletivo para uma vaga de front-end júnior. Esta aplicação web foi desenvolvida com o Framework React, o superset Typescript e algumas bibliotecas react como react-router-dom, styled-components, axios dentre outras.
+ **Pokemon** é uma aplicação contruida durante um processo seletivo para uma vaga de front-end júnior. Esta aplicação web foi desenvolvida com o Framework React, o superset Typescript e algumas bibliotecas react como react-router-dom, styled-components, axios dentre outras.
 
 O Objetivo da aplicação é o usuário conhecer mais os pokemons, nela você pode buscar um pokemons especifico ou pelo tipo do pokemon, ver atributos e caputa-los se estiver logado ou solta-los a natureza. 
 
