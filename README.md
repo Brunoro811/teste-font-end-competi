@@ -17,8 +17,16 @@ O Objetivo da aplicação é o usuário conhecer mais os pokemons, nela você po
 - React
 - Deploy cervel
 
-#Bibliotecas Ultilizadas
+# Bibliotecas Ultilizadas
 - Jest Test Libary
+- Axios
+- Styled-Components
+- React-router-dom
+- React-hook-form
+- yup
+- @hookform/resolvers
+- react-toastfy
+
 
 # Consumo da Api Pokemon
 https://pokeapi.co/
