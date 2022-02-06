@@ -7,7 +7,7 @@ interface ButtonActionData {
 }
 function ButtonAction({ value, type, onClick = () => {} }: ButtonActionData) {
   return (
-    <Button onClick={() => onClick()} type={type}>
+    <Button data-testid="submit" onClick={() => onClick()} type={type}>
       {value}
     </Button>
   );

@@ -57,7 +57,7 @@ function CardPokemon({
                   abilities: abilities,
                 })
               }
-              color="#3AA05B"
+              color="var(--grass)"
               image={add}
               alt={"add pokemon"}
             />

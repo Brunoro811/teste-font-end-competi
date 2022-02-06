@@ -35,7 +35,7 @@ function Pagination({
       {walkArray(arrPages, currentPage, currentPage + numberPagination)[0] >
         0 && (
         <ButtonPage
-          backgroundColor="#B4ADBE"
+          backgroundColor="var(--background-card-details)"
           onClick={(e) => setCurrentPage(currentPage - 1)}
           isImage
           image={previous}
@@ -59,7 +59,7 @@ function Pagination({
       ] <
         totalPages - 1 && (
         <ButtonPage
-          backgroundColor="#B4ADBE"
+          backgroundColor="var(--background-card-details)"
           onClick={() => setCurrentPage(currentPage + 1)}
           isImage
           image={next}

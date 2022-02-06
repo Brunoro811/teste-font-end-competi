@@ -13,7 +13,7 @@ export const Container = styled.div`
     export const DivHoverOptions = styled.div`
         width: 200px;
         height: 200px;
-        color: #ffffff;
+        color: var(--white-100);
         background-color: rgba(0,0,0,0.24);
         border-radius: 5px;
         position: absolute;
@@ -32,7 +32,7 @@ export const ContainerHover = styled.div`
 export const ContainerBackground = styled.div`
     border-radius: 5px;
     border: 2px solid black;
-    background-color: #B4ADBE;
+    background-color: var(--background-card-details);
     margin: 0 auto;
     width: 200px;
     height: 200px;
@@ -48,20 +48,20 @@ export const SpanType = styled.span<SpanTypePokemonProps>`
     ${(props)=>{
         switch (props.type) {
             case 'grass':
-                return "background-color: #079e45;"
+                return "background-color: var(--grass);"
             case 'electric':
-                return "background-color: #fff92b;"
+                return "background-color: var(--electric);"
             case 'fire':
-                return "background-color: #F25D52;"
+                return "background-color: var(--fire);"
             case 'water':
-                return "background-color: #118ec2;"
+                return "background-color: var(--water);"
             default:
-                return "background-color: #020202;"
+                return "background-color: var(--outhers);"
           }
     }
     }
   
-    color: #ffffff;
+    color: var(--white-100);
     position: absolute;
     top: 5px;
     right: 40px;
@@ -70,8 +70,8 @@ export const SpanType = styled.span<SpanTypePokemonProps>`
 export const DivRotate = styled.div`
     padding: 20px;
     border-radius: 12px;
-    border: 2px solid #100B16;
-    background-color: #535662;
+    border: 2px solid var(--color-border);
+    background-color: var(--background-active);
     transform: rotate(-43deg);
     position: absolute;
     top: 5px;
@@ -86,7 +86,7 @@ export const SpanNumber = styled.span`
     width: 30px;
     display: flex;
     font-size: 22px;
-    color: #ffffff;
+    color: var(--white-100);
     position: absolute;
     top: 12px;
     left: 11px;
@@ -97,12 +97,12 @@ export const DivName = styled.div`
     width: 145px;
     height: 55px;
     border-radius: 10px;
-    background-color: #7E7394;
-    border: 2px solid #100B16;
+    background-color: var(--background-primary);
+    border: 2px solid var(--color-border);
     bottom: 7px;
     p{
         text-align: center;
-        color: #ffffff;
+        color: var(--white-100);
         font-size: 20px;
         line-height: 50px;
         text-transform: capitalize;

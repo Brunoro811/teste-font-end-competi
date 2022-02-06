@@ -11,9 +11,8 @@ export const Button = styled.button<ButtonCircleProps>`
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color : ${props=> props.color || "#49DBDF"};
-    
-    border: 2px solid #000;
+    background-color : ${props=> props.color || "var(--background-view)"};
+    border: ${(props)=>props.borderNone? "none" : "2px solid var(--color-border)"};
     :hover{
     }   
 `

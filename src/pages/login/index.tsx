@@ -11,17 +11,15 @@ function Login() {
   });
   const { isWarning } = useUser();
   return (
-    <>
-      <PageAction
-        link="Não possui conta? cadastre-se!"
-        toLink="/register"
-        warning={isWarning ? "Usuario ou senha inválidos!" : false}
-        schema={schema}
-        callbackSubmit={handleLogin}
-        valueButton="Login"
-        title="Login"
-      />
-    </>
+    <PageAction
+      link="Não possui conta? cadastre-se!"
+      toLink="/register"
+      warning={isWarning ? "Usuario ou senha inválidos!" : false}
+      schema={schema}
+      callbackSubmit={handleLogin}
+      valueButton="Login"
+      title="Login"
+    />
   );
 }
 export default Login;

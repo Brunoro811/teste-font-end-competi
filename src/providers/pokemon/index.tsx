@@ -41,6 +41,7 @@ export const PokemonProvider = ({ children }: PokemonProviderData) => {
 
   useEffect(() => {
     async function loadPokemon() {
+      console.log("buscar pokemons");
       let pokemonsList: Pokemon[] = [];
       if (!pokemons[0]) {
         if (allNamesPokemon.count) {
@@ -65,6 +66,7 @@ export const PokemonProvider = ({ children }: PokemonProviderData) => {
                   abilities: abilities,
                   stats: stats,
                 };
+                console.log("buscar pokemons");
                 pokemonsList.push(newPokemon);
               })
               .catch((error) => console.log(error.response.data));

@@ -3,7 +3,7 @@ import { SpanTypePokemonProps } from "../cardPokemon/cardPokemon.model";
 
 export const Container = styled.div`
     width: 100%;
-    background-color: #ffffff;
+    background-color: var(--white-100);
     border-radius: 5px;
     display: flex;
     flex-direction: column;
@@ -41,7 +41,7 @@ export const Center = styled.div`
     width: 100%;
     border: 2px solid black;
     border-radius: 5px 5px 0px 0px;
-    background-color: #B4ADBE;
+    background-color: var(--background-card-details);
     text-align: center;
     @media(min-width:600px){
         width: 87px;
@@ -59,27 +59,30 @@ export const Img = styled.img`
     }
 `
 export const P = styled.p`
-    color: #535662;
+    font-family: Poppins;
+    font-weight: 500;
+    color: var(--background-active);
     font-size: 21px;
 `
 
 export const SpanType = styled.span<SpanTypePokemonProps>`
     padding: 10px 20px;
     border-radius: 7px;
+    color: var(--white-100);
     ${(props)=>{
         switch (props.type) {
             case 'grass':
-                return "background-color: #079e45;"
+                return "background-color: var(--grass);"
             case 'electric':
-                return "background-color: #fff92b;"
+                return "background-color: var(--electric);"
             case 'fire':
-                return "background-color: #F25D52;"
+                return "background-color: var(--fire);"
             case 'water':
-                return "background-color: #118ec2;"
+                return "background-color: var(--water);"
             default:
-                return "background-color: #020202;"
+                return "background-color: var(--outhers);"
           }
     }}
   
-    color: #ffffff;
+    color: var(shite-100);
 `

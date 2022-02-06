@@ -17,8 +17,9 @@ function Register() {
       .string()
       .required("Campo Obrigatório")
       .matches(
-        /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/gim,
-        "8 caracteres, pelo menos uma letra maiúscula, uma letra minúscula e um número"
+        ///^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/gim,
+        /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{6,}$/gim,
+        "Apartit de 6 Letras e números"
       ),
   });
 

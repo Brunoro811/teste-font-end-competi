@@ -16,11 +16,14 @@ export const RowTile = styled.div`
 export const Title = styled.h1`
     padding-bottom: 20px;
     font-size: 20px;
-    color: #535662;
+    font-family: Poppins;
+    font-weight: 500;
+    color: var(--title-primary);
     @media(min-width:600px){
         padding: 0px;
         flex-direction: row;
     }
+
 `
 export const Main = styled.div`
     width: 100%;
@@ -31,6 +34,9 @@ export const Row = styled.div`
    
 `
 export const Col = styled.p`
+    font-family: Poppins;
+    font-weight: 500;
+    color: var(--title-primary);
     flex:3 ;
     &:nth-child(3n+1){
         flex: 1;

@@ -33,7 +33,7 @@ function ContainerDetails({
           <Image src={image} alt={alt} />
           <ButtonCircle
             callback={callback}
-            color="#B4ADBE"
+            color="var(--background-card-details)"
             image={close}
             alt={`${close}`}
           />

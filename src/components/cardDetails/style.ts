@@ -10,7 +10,7 @@ export const ContainerBlack = styled.div`
     position: fixed;
     top: 0px;
     left: 0;
-    z-index: 2;
+    z-index: 3;
 `
 
 export const  Container = styled.div`
@@ -29,7 +29,7 @@ export const  Container = styled.div`
 export const CardPokemon = styled.div`
     width: 95%;
     max-width: 300px;
-    background-color: #B4ADBE;
+    background-color: var(--background-card-details);
     border-top:2px solid black;
     border-right:2px solid black;
     border-left:2px solid black;
@@ -65,7 +65,7 @@ export const CardDetails = styled.div`
     width: 95%;
     max-width: 300px;
     height: 320px;
-    background-color: #ffffff;
+    background-color: var(--white-100);
     border-bottom:2px solid black;
     border-right:2px solid black;
     border-left:2px solid black;
@@ -91,14 +91,14 @@ export const DivName = styled.div`
     height: 35px;
     padding: 5px;
     border-radius: 10px;
-    background-color: #7E7394;
-    border: 2px solid #100B16;
+    background-color: var(--background-primary);
+    border: 2px solid var(--color-border);
     bottom: -10px;
     right: 0px;
     z-index: 1;
     p{
         text-align: center;
-        color: #ffffff;
+        color: var(--white-100);
         font-size: 16px;
         line-height: 25px;
         text-transform: capitalize;
@@ -114,19 +114,19 @@ export const SpanType = styled.span<SpanTypePokemonProps    >`
     ${(props)=>{
         switch (props.type) {
             case 'grass':
-                return "background-color: #079e45;"
+                return "background-color: var(--grass);"
             case 'electric':
-                return "background-color: #fff92b;"
+                return "background-color: var(--electric);"
             case 'fire':
-                return "background-color: #F25D52;"
+                return "background-color: var(--fire);"
             case 'water':
-                return "background-color: #118ec2;"
+                return "background-color: var(--water);"
             default:
-                return "background-color: #020202;"
+                return "background-color: var(--outhers);"
           }
     }}
   
-    color: #ffffff;
+    color: var(--white-100);
     position: absolute;
     top: 5px;
     right: 40px;
@@ -148,19 +148,19 @@ export const RowStats = styled.div<RowStatsProps>`
     ${(props)=>{
         switch (props.name) {
             case 'grass':
-                return "background-color: #079e45;"
+                return "background-color: var(--grass);"
             case 'electric':
-                return "background-color: #fff92b;"
-            case 'hp':
-                return "background-color: #F25D52;"
+                return "background-color: var(--electric);"
+            case 'fire':
+                return "background-color: var(--fire);"
             case 'water':
-                return "background-color: #118ec2;"
+                return "background-color: var(--water);"
             default:
-                return "background-color: #020202;"
+                return "background-color: var(--outhers);"
           }
     }}
   
-    color: #ffffff;
+    color: var(--white-100);
 `
 
 export const  ContainerAbilities= styled.div`

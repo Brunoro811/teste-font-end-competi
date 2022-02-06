@@ -8,7 +8,7 @@ function InputSearch({
   placeholder,
   value,
   onChange,
-  functionSearch = () => {},
+  //functionSearch = () => {},
   rest,
 }: InputSearchData) {
   const [displayValue, setDisplayValue] = useState(value);

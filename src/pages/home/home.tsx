@@ -127,7 +127,7 @@ function Home() {
           <ContainerCenter>
             <SpanAside>
               <ButtonCircle
-                color="#524153"
+                color="var(--background-strong )"
                 image={Left}
                 callback={handleCarroselleft}
                 alt="left"
@@ -154,7 +154,7 @@ function Home() {
             </ContainerMax>
             <SpanAside>
               <ButtonCircle
-                color="#524153"
+                color="var(--background-strong )"
                 image={Right}
                 callback={handleCarroselRight}
                 alt="right"
@@ -167,7 +167,7 @@ function Home() {
               circle
               spanHidden
               children={1}
-              backgroundColor="#7E7394"
+              backgroundColor="var(--background-primary)"
               numberPage={carroselPage}
             />
             <ButtonPage
@@ -175,7 +175,7 @@ function Home() {
               circle
               spanHidden
               children={2}
-              backgroundColor="#7E7394"
+              backgroundColor="var(--background-primary)"
               numberPage={carroselPage}
             />
             <ButtonPage
@@ -183,7 +183,7 @@ function Home() {
               circle
               spanHidden
               children={3}
-              backgroundColor="#7E7394"
+              backgroundColor="var(--background-primary)"
               numberPage={carroselPage}
             />
           </DivCenter>
