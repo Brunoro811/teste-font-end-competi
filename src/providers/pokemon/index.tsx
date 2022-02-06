@@ -8,7 +8,11 @@ import {
 import axios from "axios";
 
 import { baseURL } from "../../services/api";
-import { POKEMONS, POKEMONS_LINKS } from "../../services/localStorage";
+import {
+  POKEMONS,
+  POKEMONS_LINKS,
+  POKEMON_CARROSEL,
+} from "../../services/localStorage";
 
 const PokemonContext = createContext<PokemonContextData>(
   {} as PokemonContextData
@@ -21,6 +25,11 @@ export const PokemonProvider = ({ children }: PokemonProviderData) => {
   const [pokemons, setPokemons] = useState<Pokemon[]>(
     localStorage.getItem(POKEMONS)
       ? JSON.parse(localStorage.getItem(POKEMONS) || "")
+      : []
+  );
+  const [pokemonsCarrosel, setPokemonsCarrosel] = useState<Pokemon[]>(
+    localStorage.getItem(POKEMON_CARROSEL)
+      ? JSON.parse(localStorage.getItem(POKEMON_CARROSEL) || "")
       : []
   );
 
@@ -71,6 +80,18 @@ export const PokemonProvider = ({ children }: PokemonProviderData) => {
               })
               .catch((error) => console.log(error.response.data));
           }
+          if (!pokemonsCarrosel[0]) {
+            let carroselPokemonsList = [];
+            for (let i = 0; i < 16; i++) {
+              let position = Math.floor(Math.random() * 1118);
+              carroselPokemonsList.push(pokemonsList[position]);
+            }
+            setPokemonsCarrosel(carroselPokemonsList);
+            localStorage.setItem(
+              POKEMON_CARROSEL,
+              JSON.stringify(carroselPokemonsList)
+            );
+          }
           setPokemons(pokemonsList);
           localStorage.setItem(POKEMONS, JSON.stringify(pokemonsList));
         }
@@ -86,6 +107,7 @@ export const PokemonProvider = ({ children }: PokemonProviderData) => {
         pokemons,
         allNamesPokemon,
         setPokemons,
+        pokemonsCarrosel,
       }}
     >
       {children}

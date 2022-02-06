@@ -40,9 +40,8 @@ export const ContainerMax = styled.div`
 `
 export const CaroselContainer = styled.div`
     display: flex;
-    overflow-x: auto;
+    overflow: hidden;
     scroll-behavior: smooth;
-    overflow-x: hidden;
 
 `
 export const SpanAside = styled.span`
