@@ -31,7 +31,7 @@ O Objetivo da aplicação é o usuário conhecer mais os pokemons, nela você po
 # Consumo da Api Pokémon
 https://pokeapi.co/
 
-# Como execultar
+# Como executar
 pré-requisitos : npm ou yarn.
 recomendado yarn.
 
