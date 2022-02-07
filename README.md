@@ -1,23 +1,23 @@
-# Pokemon
-### Venha ser um emstre pokemon!
+# Pokémon
+### Venha ser um mestre pokémon!
 > Status: Em Desenvolvimento ⚠️
 
 [![NPM](https://img.shields.io/npm/l/react)](https://github.com/Brunoro811/teste-font-end-competi/blob/main/LICENSE)
 # Sobre o Projeto
 https://teste-font-end-competi-brunoro811.vercel.app/
 
- **Pokemon** é uma aplicação contruida durante um processo seletivo para uma vaga de front-end júnior. Esta aplicação web foi desenvolvida com o Framework React, o superset Typescript e algumas bibliotecas react como react-router-dom, styled-components, axios dentre outras.
+ **Pokémon** é uma aplicação contruida durante um processo seletivo para uma vaga de front-end júnior. Esta aplicação web foi desenvolvida com o Framework React, o superset Typescript e algumas bibliotecas react como react-router-dom, styled-components, axios dentre outras.
 
 O Objetivo da aplicação é o usuário conhecer mais os pokemons, nela você pode buscar um pokemons especifico ou pelo tipo do pokemon, ver atributos e caputa-los se estiver logado ou solta-los a natureza. 
 
 # Fotos
 
-# Tecnologias Ultilizadas
+# Tecnologias Utilizadas
 - HTML / CSS / JS / Typescript
 - React
-- Deploy cervel
+- Deploy vercel
 
-# Bibliotecas Ultilizadas
+# Bibliotecas Utilizadas
 - Jest Test Libary
 - Axios
 - Styled-Components
@@ -28,7 +28,7 @@ O Objetivo da aplicação é o usuário conhecer mais os pokemons, nela você po
 - react-toastfy
 
 
-# Consumo da Api Pokemon
+# Consumo da Api Pokémon
 https://pokeapi.co/
 
 # Como execultar
@@ -50,7 +50,7 @@ cd test-font-end-competi
  ``` 
  # Autor
  
- Bruno Ferreira de OLiveira
+ Bruno Ferreira de Oliveira
  
  https://www.linkedin.com/in/brferreiraoliveira/
  
