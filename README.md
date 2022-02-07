@@ -8,7 +8,7 @@ https://teste-font-end-competi-brunoro811.vercel.app/
 
  **Pokémon** é uma aplicação contruida durante um processo seletivo para uma vaga de front-end júnior. Esta aplicação web foi desenvolvida com o Framework React, o superset Typescript e algumas bibliotecas react como react-router-dom, styled-components, axios dentre outras.
 
-O Objetivo da aplicação é o usuário conhecer mais os pokemons, nela você pode buscar um pokemons especifico ou pelo tipo do pokemon, ver atributos e caputa-los se estiver logado ou solta-los a natureza. 
+O Objetivo da aplicação é o usuário conhecer mais os pokemons, nela você pode buscar um pokémons especifico ou pelo tipo do pokémon, ver atributos e caputa-los se estiver logado ou solta-los a natureza. 
 
 # Fotos
 
