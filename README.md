@@ -10,7 +10,6 @@ https://teste-font-end-competi-brunoro811.vercel.app/
 
 O Objetivo da aplicação é o usuário conhecer mais os pokemons, nela você pode buscar um pokémons especifico ou pelo tipo do pokémon, ver atributos e caputa-los se estiver logado ou solta-los a natureza. 
 
-# Fotos
 
 # Tecnologias Utilizadas
 - HTML / CSS / JS / Typescript
